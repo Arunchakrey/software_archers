@@ -1,4 +1,6 @@
 from cartItem import CartItem
+from orderManager import OrderManager
+from shipmentInfo import ShipmentInfo
 from typing import List
 
 class Cart:
@@ -9,12 +11,12 @@ class Cart:
         return sum(item.getTotal() for item in self.items)
     
     def addItem(self, product, quantity):
-        cart_item = CartItem(product, quantity)
+        cart_item = CartItem(product, quantity) #change case to pascal
         if not product.isInStock(quantity):
             return f"{product.name} is not available"
         
         for item in self.items:
-            if item.product.name == product.name:
+            if item.product.id == product.id:
                 item.quantity = quantity
                 break
         else:
@@ -23,9 +25,32 @@ class Cart:
     def removeItem(self, productId):
         self.items = [item for item in self.items if item.product.id != productId]
         
+    def clearCart(self):
+        self.items = []
+        return self.items
+        
     def displayCart(self):
         print("Cart contents:")
         for item in self.items:
             print (f"item:{item.product.name}  x  quantity:{item.quantity}")
         print(f"Total: ${self.getTotal()}")
+    
+    def checkOut(self, customerId: int):
+        from order import Order
+        if not self.items:
+            raise Exception("Cart is empty")
+    
+        #Deduct stock 
+        for item in self.items:
+            item.product.quantity -= item.quantity
+        
+        orderId = OrderManager.getNextOrderId("orders.txt")
+        shipmentInfo = ShipmentInfo("jack", "12 Hawthorn")
+        order = Order(orderId, customerId, shipmentInfo, self)
          
+        OrderManager.saveToFile(order, "orders.txt")
+         
+        self.clearCart()
+        
+        print(f"Order {orderId} placed successfully.")
+        return order

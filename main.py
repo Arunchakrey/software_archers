@@ -13,4 +13,8 @@ cart_1.addItem(computer, 1)
 cart_1.addItem(phone, 1)
 cart_1.addItem(chair, 1)
 
+cart_1.removeItem(1)
+
 cart_1.displayCart()
+
+cart_1.checkOut(2)
