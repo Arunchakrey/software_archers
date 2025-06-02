@@ -1,4 +1,4 @@
-from product import Product
+from model.Product import Product
 
 class CartItem:
     def __init__(self, product: Product, quantity: int):

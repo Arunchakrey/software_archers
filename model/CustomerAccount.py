@@ -1,4 +1,4 @@
-from IAccount import IAccount
+from model.IAccount import IAccount
 
 class CustomerAccount(IAccount):
     def __init__(self, username, password, email):

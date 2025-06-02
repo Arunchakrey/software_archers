@@ -1,7 +1,7 @@
 import json 
 import os
-from CustomerAccount import CustomerAccount
-from AdminAccount import AdminAccount
+from model.CustomerAccount import CustomerAccount
+from model.AdminAccount import AdminAccount
 
 class AccountReader:
     def __init__(self, filename):

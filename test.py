@@ -1,10 +1,10 @@
-from CustomerAccount import CustomerAccount
-from AdminAccount import AdminAccount
-from authenticator import Authenticator
-from AccountReader import AccountReader
+from model.CustomerAccount import CustomerAccount
+from model.AdminAccount import AdminAccount
+from services.authenticator import Authenticator
+from services.AccountReader import AccountReader
 
 
-FILENAME = "accounts.json"
+FILENAME = "data/accounts.json"
 account_reader = AccountReader(FILENAME)
 accounts = account_reader.read_accounts()
 login_processor = Authenticator(accounts, account_reader)

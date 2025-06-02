@@ -1,5 +1,5 @@
-from cart import Cart
-from product import Product
+from model.cart import Cart
+from model.Product import Product
 
 # initialise products (self, id, name, price, quantity, description):
 computer= Product(1, "Computer 1", 100, 5, "Black, Fast, Mobile")

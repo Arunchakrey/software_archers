@@ -1,8 +1,8 @@
 from datetime import date
-from shipmentInfo import ShipmentInfo
+from model.ShipmentInfo import ShipmentInfo
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
-    from cart import Cart
+    from model.cart import Cart
 
 class Order:
     def __init__(self, orderId: int, customerId: int, shipmentInfo: ShipmentInfo, cart: "Cart", status: str = "Pending", orderDate: date = date.today()):
@@ -19,7 +19,7 @@ class Order:
             f"Order ID: {self.orderId}\n"
             f"Customer ID: {self.customerId}\n"
             f"Date: {self.orderDate.strftime('%Y-%m-%d')}\n"
-            f"Status: {self.status}\n"
+            # f"Status: {self.status}\n"
             f"Total: ${self.total:.2f}\n"
             "Items:\n"
         )

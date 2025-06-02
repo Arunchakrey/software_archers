@@ -16,7 +16,7 @@ class OrderManager:
             f.write("---------------------------------")
     
     @staticmethod
-    def getNextOrderId(filepath="orders.txt") -> int:
+    def getNextOrderId(filepath="data/orders.txt") -> int:
         try:
             with open(filepath, "r") as f:
                 lines = f.readlines()

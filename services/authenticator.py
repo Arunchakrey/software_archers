@@ -1,4 +1,4 @@
-from CustomerAccount import CustomerAccount
+from model.CustomerAccount import CustomerAccount
 
 
 class Authenticator:

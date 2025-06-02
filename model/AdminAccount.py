@@ -1,4 +1,4 @@
-from IAccount import IAccount   
+from model.IAccount import IAccount   
 
 class AdminAccount(IAccount):
     def __init__(self, username, password, access_level):
