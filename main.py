@@ -1,4 +1,4 @@
-from model.cart import Cart
+from model.Cart import Cart
 from model.Product import Product
 
 # initialise products (self, id, name, price, quantity, description):

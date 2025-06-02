@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "iPhone 13",
+    "price": 1000.00,
+    "quantity": 10,
+    "description": "Apple smartphone"
+  },
+  {
+    "id": 2,
+    "name": "Gaming Chair",
+    "price": 250.00,
+    "quantity": 10,
+    "description": "Comfortable gaming chair"
+  },
+  {
+    "id": 3,
+    "name": "iPhone 10",
+    "price": 200.00,
+    "quantity": 10,
+    "description": "Silver, Sleek, Heavy"
+  }
+]

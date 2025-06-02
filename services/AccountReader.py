@@ -2,10 +2,13 @@ import json
 import os
 from model.CustomerAccount import CustomerAccount
 from model.AdminAccount import AdminAccount
+from services.Catalogue import Catalogue
 
 class AccountReader:
     def __init__(self, filename):
         self._filename = filename
+        self.catalogue = Catalogue()
+        self.catalogue.loadFromFile("data/products.json")
 
     def read_accounts(self):
         accounts = []
@@ -17,7 +20,7 @@ class AccountReader:
                 if entry["type"] == "customer":
                     accounts.append(CustomerAccount(entry["username"], entry["password"], entry["email"]))
                 elif entry["type"] == "admin":
-                    accounts.append(AdminAccount(entry["username"], entry["password"], entry["access_level"]))
+                    accounts.append(AdminAccount(entry["username"], entry["password"], entry["access_level"], self.catalogue))
 
         return accounts
     

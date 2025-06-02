@@ -1,4 +1,4 @@
-from model.cartItem import CartItem
+from model.CartItem import CartItem
 from services.orderManager import OrderManager
 from model.ShipmentInfo import ShipmentInfo
 from typing import List

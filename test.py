@@ -2,6 +2,8 @@ from model.CustomerAccount import CustomerAccount
 from model.AdminAccount import AdminAccount
 from services.authenticator import Authenticator
 from services.AccountReader import AccountReader
+from services.Catalogue import Catalogue
+# from services.CartManager import CartManager
 
 
 FILENAME = "data/accounts.json"
@@ -22,10 +24,63 @@ while True:
         account = login_processor.authenticate(username, password)
         if account:
             account.display_info()
-            if isinstance(account, AdminAccount):
-                print("Welcome, admin")
-            else:
-                print("Welcome")
+    
+        if isinstance(account, AdminAccount):
+            print("Welcome, admin")
+            # (insert admin menu here if needed)
+        
+        elif isinstance(account, CustomerAccount):
+            print(f"Welcome, {account.username}!")
+            catalogue = Catalogue()
+            catalogue.loadFromFile("data/products.json")
+            
+            while True:
+                print("\n--- Customer Menu ---")
+                print("1. View Products")
+                print("2. Add Product to Cart")
+                print("3. View Cart")
+                print("4. Remove Item from Cart")
+                print("5. Checkout")
+                print("6. Logout")
+                c_choice = input("Choose an option: ").strip()
+
+                if c_choice == "1":
+                    catalogue.listProducts()
+
+                elif c_choice == "2":
+                    try:
+                        pid = int(input("Enter product ID: "))
+                        qty = int(input("Enter quantity: "))
+                        product = catalogue.getProductById(pid)
+                        if product:
+                            account._cart.addItem(product, qty)
+                        else:
+                            print("Product not found.")
+                    except ValueError:
+                        print("Invalid input.")
+
+                elif c_choice == "3":
+                    account._cart.displayCart()
+
+                elif c_choice == "4":
+                    try:
+                        pid = int(input("Enter product ID to remove: "))
+                        account._cart.removeItem(pid)
+                    except ValueError:
+                        print("Invalid product ID.")
+
+                elif c_choice == "5":
+                    try:
+                        account._cart.checkOut(customerId=account.username)
+                    except Exception as e:
+                        print(f"Checkout failed: {e}")
+
+                elif c_choice == "6":
+                    print("Logged out.")
+                    break
+
+                else:
+                    print("Invalid option. Try again.")
 
     elif choice == "2":
         login_processor.signup()

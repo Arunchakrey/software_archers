@@ -1,10 +1,14 @@
-from model.IAccount import IAccount   
+from model.IAccount import IAccount
+from services.ProductManager import ProductManager
+from services.StatisticsManager import StatisticsManager
 
 class AdminAccount(IAccount):
-    def __init__(self, username, password, access_level):
+    def __init__(self, username, password, access_level, catalogue):
         self._username = username
         self._password = password
         self._access_level = access_level
+        self.product_manager = ProductManager(catalogue)
+        self.statistics_manager = StatisticsManager()
 
     @property
     def username(self):
@@ -27,5 +31,21 @@ class AdminAccount(IAccount):
 
     def display_info(self):
         print(f"Admin: {self._username}, Access Level: {self._access_level}")
+        
+    """ Functions for handling products
+    """
+        
+    def register_product(self, *args, **kwargs):
+        self.product_manager.register_product(*args, **kwargs)
+
+    def update_product_price(self, product_id, new_price):
+        self.product_manager.update_price(product_id, new_price)
+
+    def update_product_quantity(self, product_id, new_quantity):
+        self.product_manager.update_quantity(product_id, new_quantity)
+
+    def generate_sales_report(self, start_date: str, end_date: str, top_n: int = None):
+        self.statistics_manager.generateStatistics(start_date, end_date, top_n)
+
 
     

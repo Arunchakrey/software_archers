@@ -2,7 +2,7 @@ from datetime import date
 from model.ShipmentInfo import ShipmentInfo
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
-    from model.cart import Cart
+    from model.Cart import Cart
 
 class Order:
     def __init__(self, orderId: int, customerId: int, shipmentInfo: ShipmentInfo, cart: "Cart", status: str = "Pending", orderDate: date = date.today()):

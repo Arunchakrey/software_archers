@@ -3,10 +3,9 @@ from collections import defaultdict
 import re
 
 
-class Statistics:
+class StatisticsManager:
     def __init__(self):
-        self.period
-        self.totalSales
+        self.totalSales = 0.0
         self.topSellingProducts = []
         
     def analyzeSales(self, startDate, endDate, filename = "data/orders.txt"):

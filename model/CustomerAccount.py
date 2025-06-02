@@ -1,10 +1,12 @@
 from model.IAccount import IAccount
+from model.Cart import Cart
 
 class CustomerAccount(IAccount):
     def __init__(self, username, password, email):
         self._username = username
         self._password = password
         self._email = email
+        self._cart = Cart()
 
     @property
     def username(self):
