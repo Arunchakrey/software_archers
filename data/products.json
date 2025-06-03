@@ -3,7 +3,7 @@
     "id": 1,
     "name": "iPhone 13",
     "price": 1000.0,
-    "quantity": 10,
+    "quantity": 8,
     "description": "Apple smartphone"
   },
   {
@@ -17,7 +17,7 @@
     "id": 3,
     "name": "iPhone 10",
     "price": 200.0,
-    "quantity": 10,
+    "quantity": 6,
     "description": "Silver, Sleek, Heavy"
   }
 ]

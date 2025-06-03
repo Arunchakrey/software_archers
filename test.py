@@ -70,8 +70,9 @@ while True:
                         print("Invalid product ID.")
 
                 elif c_choice == "5":
+                    address = input("Enter your address: ")
                     try:
-                        account._cartManager.checkout(account.username)
+                        account._cartManager.checkout(account.username, address)
                     except Exception as e:
                         print(f"Checkout failed: {e}")
 

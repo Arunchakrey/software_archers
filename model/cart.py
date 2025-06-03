@@ -36,7 +36,7 @@ class Cart:
             print (f"item:{item.product.name}  x  quantity:{item.quantity}")
         print(f"Total: ${self.getTotal()}")
     
-    def checkOut(self, customerName):
+    def checkOut(self, customerName, address):
         from model.Order import Order
         if not self.items:
             raise Exception("Cart is empty")
@@ -46,7 +46,7 @@ class Cart:
             item.product.quantity -= item.quantity
         
         orderId = OrderManager.getNextOrderId("data/orders.txt")
-        shipmentInfo = ShipmentInfo("jack", "12 Hawthorn")
+        shipmentInfo = ShipmentInfo(customerName, address)
         order = Order(orderId, customerName, shipmentInfo, self)
          
         OrderManager.saveToFile(order, "data/orders.txt")

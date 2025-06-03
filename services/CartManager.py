@@ -20,7 +20,7 @@ class CartManager:
     def viewCart(self):
         self.cart.displayCart()
 
-    def checkout(self, customerName, filename="data/products.json"):
+    def checkout(self, customerName, address, filename="data/products.json"):
         try:
             with open(filename, "r") as file:
                 data = json.load(file)
@@ -34,7 +34,7 @@ class CartManager:
                     
             with open(filename, "w") as file:
                 json.dump(data, file, indent=2)
-                self.cart.checkOut(customerName)
+                self.cart.checkOut(customerName, address)
 
         except Exception as e:
             print(f"Checkout failed: {e}")

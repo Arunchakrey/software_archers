@@ -4,4 +4,4 @@ class ShipmentInfo:
         self.deliveryAddress = deliveryAddress
     
     def getDeliveryLabel(self) -> str:
-        return (f"Customer: {self.customerName}     Address:{self.deliveryAddress}      Shipment:{self.shipmentId}")
+        return (f"Customer: {self.customerName}     Address:{self.deliveryAddress}")

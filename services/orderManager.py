@@ -10,7 +10,8 @@ class OrderManager:
     @staticmethod
     def saveToFile(order, filepath="orders.txt"):
         with open(filepath, "a") as f:
-            f.write(f"{order.orderId}, {order.customerId}, {order.orderDate}, {order.total:.2f}\n")
+            f.write(f"{order.orderId}, {order.customerId}, {order.orderDate}, {order.total:.2f}, Incomplete\n")
+            f.write(f"  -{order.shipmentInfo.getDeliveryLabel()}\n")
             for item in order.items:
                 f.write(f"  -{item.product.name} x {item.quantity} = ${item.getTotal():.2F}\n")
             f.write("---------------------------------\n")
