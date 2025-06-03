@@ -38,7 +38,7 @@ while True:
                 print("1. View Products")
                 print("2. Edit Products")
                 print("3. Generate Statistics")
-                print("4. Manage Order Status")
+                print("4. Manage Shipment Status")
                 a_choice = input("Choose an option: ").strip()
 
                 if a_choice == "1":
