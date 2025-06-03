@@ -1,12 +1,12 @@
 from model.IAccount import IAccount
 from services.ProductManager import ProductManager
+from services.Catalogue import Catalogue
 from services.StatisticsManager import StatisticsManager
 
 class AdminAccount(IAccount):
-    def __init__(self, username, password, access_level, catalogue):
+    def __init__(self, username, password, catalogue):
         self._username = username
         self._password = password
-        self._access_level = access_level
         self.product_manager = ProductManager(catalogue)
         self.statistics_manager = StatisticsManager()
 
@@ -30,7 +30,7 @@ class AdminAccount(IAccount):
         self._access_level = value
 
     def display_info(self):
-        print(f"Admin: {self._username}, Access Level: {self._access_level}")
+        print(f"Admin: {self._username}")
         
     """ Functions for handling products
     """

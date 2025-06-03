@@ -20,7 +20,7 @@ class AccountReader:
                 if entry["type"] == "customer":
                     accounts.append(CustomerAccount(entry["username"], entry["password"], entry["email"]))
                 elif entry["type"] == "admin":
-                    accounts.append(AdminAccount(entry["username"], entry["password"], entry["access_level"], self.catalogue))
+                    accounts.append(AdminAccount(entry["username"], entry["password"], self.catalogue))
 
         return accounts
     
@@ -42,8 +42,7 @@ class AccountReader:
             entry = {
                 "type": "admin",
                 "username": account.username,
-                "password": account._password,
-                "access_level": account.access_level
+                "password": account._password
             }
 
         data.append(entry)

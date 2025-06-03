@@ -3,21 +3,35 @@
     "id": 1,
     "name": "iPhone 13",
     "price": 1000.0,
-    "quantity": 8,
+    "quantity": 10,
     "description": "Apple smartphone"
   },
   {
     "id": 2,
     "name": "Gaming Chair",
     "price": 250.0,
-    "quantity": 6,
+    "quantity": 10,
     "description": "Comfortable gaming chair"
   },
   {
     "id": 3,
     "name": "iPhone 10",
     "price": 200.0,
-    "quantity": 6,
+    "quantity": 10,
     "description": "Silver, Sleek, Heavy"
+  },
+  {
+    "id": 4,
+    "name": "hello",
+    "price": 123,
+    "quantity": 12.0,
+    "description": "adad"
+  },
+  {
+    "id": 5,
+    "name": "hi",
+    "price": 12,
+    "quantity": 2.0,
+    "description": "oh no"
   }
 ]

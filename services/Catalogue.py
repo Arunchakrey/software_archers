@@ -9,8 +9,9 @@ class Catalogue:
         self.products = ProductReader.readFromJson(filepath)
 
     def listProducts(self):
+        self.loadFromFile(filepath='data/products.json')
         for product in self.products:
-            print(f"[{product.id}] {product.name} - ${product.price:.2f} ({product.quantity} in stock)")
+            print(f"\n[{product.id}] {product.name} - ${product.price:.2f} ({product.quantity} in stock)")
 
     def getProductById(self, product_id: int):
         for product in self.products:

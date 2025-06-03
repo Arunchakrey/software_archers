@@ -3,10 +3,12 @@ from model.AdminAccount import AdminAccount
 from services.authenticator import Authenticator
 from services.AccountReader import AccountReader
 from services.Catalogue import Catalogue
+from services.ProductManager import ProductManager
 # from services.CartManager import CartManager
 
 
 FILENAME = "data/accounts.json"
+PRODUCTS_FILENAME = "data/products.json"
 account_reader = AccountReader(FILENAME)
 accounts = account_reader.read_accounts()
 login_processor = Authenticator(accounts, account_reader)
@@ -24,15 +26,75 @@ while True:
         account = login_processor.authenticate(username, password)
         if account:
             account.display_info()
+            catalogue = Catalogue()
+            catalogue.loadFromFile("data/products.json")
     
         if isinstance(account, AdminAccount):
-            print("Welcome, admin")
-            # (insert admin menu here if needed)
+            print("Welcome, Sir Admin!!!. It's been too long since we last saw you...")
+
+            while True:
+                print("\n--- Admin Menu---")
+                print("1. View Products")
+                print("2. Edit Products")
+                print("3. Generate Statistics")
+                print("4. Manage Order Status")
+                a_choice = input("Choose an option: ").strip()
+
+                if a_choice == "1":
+                    catalogue.listProducts()
+                
+                elif a_choice == "2":
+                    print("")
+                    print("1. View Products")
+                    print("2. Register New Product")
+                    print("3. Update Product Quantity")
+                    print("4. Update Price")
+                    print("5. Return")
+                    e_choice = input("Choose and option: ").strip()
+
+                    if e_choice == "1":
+                        catalogue.listProducts()
+                        pass
+                    
+                    elif e_choice == "2":
+                        try:
+                            p_id = account.product_manager.get_next_id(PRODUCTS_FILENAME)
+                            p_name = input("Enter Product Name: ").strip()
+                            p_price = int(input("Enter Product's Price: ").strip())
+                            p_quantity = float(input("Enter Product's Quantity: ").strip())
+                            p_description = input("Enter Product's description: ").strip()
+                            account.product_manager.registerProduct(p_id, p_name, p_price, p_quantity, p_description)
+                            catalogue.listProducts()
+                        except ValueError:
+                            print("Entry is empty")
+
+                    elif e_choice == "3":
+                        try:
+                            catalogue.listProducts()
+                            p_id = input("Enter Product ID: ").strip()
+                            p_quantity = input("Enter Product's Quantity: ").strip()
+                            account.product_manager.updateQuantity(p_id, p_quantity)
+                        except ValueError:
+                            print("Invalid quantity or ID")
+
+                    elif e_choice == "4":
+                        try:
+                            catalogue.listProducts()
+                            p_id = input("Enter Product ID: ").strip()
+                            p_price = input("Enter Product's Price: ").strip()
+                            account.product_manager.updatePrice(p_id, p_price)
+                        except ValueError:
+                            print("Invalid Price or ID")
+
+                    elif e_choice == "5":
+                        continue
+
+                    else:
+                        print("Invalid Option, try again.")
+
         
         elif isinstance(account, CustomerAccount):
             print(f"Welcome, {account.username}!")
-            catalogue = Catalogue()
-            catalogue.loadFromFile("data/products.json")
             
             while True:
                 print("\n--- Customer Menu ---")
