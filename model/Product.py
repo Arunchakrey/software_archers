@@ -18,6 +18,9 @@ class Product:
     
     def setProductPrice(self, value):
         self.price = int(value)
+
+    def setProductQuantity(self, value):
+        self.quantity = int(value)
     
     def isInStock(self, quantity: int = 1):
         return self.quantity >= quantity

@@ -2,8 +2,8 @@
   {
     "id": 1,
     "name": "iPhone 13",
-    "price": 1000.0,
-    "quantity": 10,
+    "price": 12,
+    "quantity": 5,
     "description": "Apple smartphone"
   },
   {
@@ -33,5 +33,12 @@
     "price": 12,
     "quantity": 2.0,
     "description": "oh no"
+  },
+  {
+    "id": 6,
+    "name": "laptop",
+    "price": 332,
+    "quantity": 2.0,
+    "description": "yes good"
   }
 ]

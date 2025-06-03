@@ -29,6 +29,7 @@ while True:
             catalogue = Catalogue()
             catalogue.loadFromFile("data/products.json")
     
+        # Admin Logic Loop
         if isinstance(account, AdminAccount):
             print("Welcome, Sir Admin!!!. It's been too long since we last saw you...")
 
@@ -76,12 +77,12 @@ while True:
                             account.product_manager.updateQuantity(p_id, p_quantity)
                         except ValueError:
                             print("Invalid quantity or ID")
-
+                            
                     elif e_choice == "4":
                         try:
                             catalogue.listProducts()
                             p_id = input("Enter Product ID: ").strip()
-                            p_price = input("Enter Product's Price: ").strip()
+                            p_price = float(input("Enter Product's Price: ").strip())
                             account.product_manager.updatePrice(p_id, p_price)
                         except ValueError:
                             print("Invalid Price or ID")
@@ -91,6 +92,12 @@ while True:
 
                     else:
                         print("Invalid Option, try again.")
+
+                elif a_choice == "3":
+                    try:
+                        account.generate_sales_report('2025-05-28', '2025-06-03')
+                    except ValueError:
+                        print("Wrong input")
 
         
         elif isinstance(account, CustomerAccount):

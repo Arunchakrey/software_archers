@@ -36,7 +36,6 @@ class ProductManager:
             print(f"[ERROR] Product with ID {id} already exists.")
             return
         new_product = Product(id, name, price, quantity, description)
-        # self.catalogue.products.append(new_product)
         self.append_to_json(new_product)
         print(f"[SUCCESS] Product '{name}' registered.")
 
@@ -44,7 +43,8 @@ class ProductManager:
     def updatePrice(self, product_id: int, new_price: float):
         product = self.catalogue.getProductById(product_id)
         if product:
-            product.price = new_price
+            product.setProductPrice(new_price)
+            self.catalogue.save_products_to_json()
             print(f"[UPDATED] Price of '{product.name}' set to ${new_price:.2f}")
         else:
             print("[ERROR] Product not found.")
@@ -52,7 +52,8 @@ class ProductManager:
     def updateQuantity(self, product_id: int, new_quantity: int):
         product = self.catalogue.getProductById(product_id)
         if product:
-            product.quantity = new_quantity
+            product.setProductQuantity(new_quantity)
+            self.catalogue.save_products_to_json()
             print(f"[UPDATED] Quantity of '{product.name}' set to {new_quantity}")
         else:
             print("[ERROR] Product not found.")
