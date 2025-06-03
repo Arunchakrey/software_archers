@@ -53,7 +53,7 @@ while True:
                         qty = int(input("Enter quantity: "))
                         product = catalogue.getProductById(pid)
                         if product:
-                            account._cart.addItem(product, qty)
+                            account._cartManager.addToCart(product, qty)
                         else:
                             print("Product not found.")
                     except ValueError:
@@ -70,8 +70,9 @@ while True:
                         print("Invalid product ID.")
 
                 elif c_choice == "5":
+                    address = input("Enter your address: ")
                     try:
-                        account._cart.checkOut(customerId=account.username)
+                        account._cartManager.checkout(account.username, address)
                     except Exception as e:
                         print(f"Checkout failed: {e}")
 

@@ -1,5 +1,5 @@
 from model.CartItem import CartItem
-from services.orderManager import OrderManager
+from services.OrderManager import OrderManager
 from model.ShipmentInfo import ShipmentInfo
 from typing import List
 
@@ -21,6 +21,7 @@ class Cart:
                 break
         else:
             self.items.append(cart_item)
+        return None
         
     def removeItem(self, productId):
         self.items = [item for item in self.items if item.product.id != productId]
@@ -35,7 +36,7 @@ class Cart:
             print (f"item:{item.product.name}  x  quantity:{item.quantity}")
         print(f"Total: ${self.getTotal()}")
     
-    def checkOut(self, customerId: int):
+    def checkOut(self, customerName, address):
         from model.Order import Order
         if not self.items:
             raise Exception("Cart is empty")
@@ -45,8 +46,8 @@ class Cart:
             item.product.quantity -= item.quantity
         
         orderId = OrderManager.getNextOrderId("data/orders.txt")
-        shipmentInfo = ShipmentInfo("jack", "12 Hawthorn")
-        order = Order(orderId, customerId, shipmentInfo, self)
+        shipmentInfo = ShipmentInfo(customerName, address)
+        order = Order(orderId, customerName, shipmentInfo, self)
          
         OrderManager.saveToFile(order, "data/orders.txt")
          

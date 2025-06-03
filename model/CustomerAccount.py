@@ -1,4 +1,5 @@
 from model.IAccount import IAccount
+from services.CartManager import CartManager
 from model.Cart import Cart
 
 class CustomerAccount(IAccount):
@@ -7,6 +8,7 @@ class CustomerAccount(IAccount):
         self._password = password
         self._email = email
         self._cart = Cart()
+        self._cartManager = CartManager(self._cart)
 
     @property
     def username(self):

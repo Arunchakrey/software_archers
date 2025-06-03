@@ -1,5 +1,6 @@
 from model.Cart import Cart
 from model.Product import Product
+import json
 
 class CartManager:
     def __init__(self, cart: Cart):
@@ -19,8 +20,21 @@ class CartManager:
     def viewCart(self):
         self.cart.displayCart()
 
-    def checkout(self, customer_id):
+    def checkout(self, customerName, address, filename="data/products.json"):
         try:
-            self.cart.checkOut(customer_id)
+            with open(filename, "r") as file:
+                data = json.load(file)
+                
+            for cartItem in self.cart.items:
+                for prod in data:
+                    if prod["id"] == cartItem.product.id:
+                        if prod["quantity"] < cartItem.quantity:
+                            raise ValueError(f"Not enough stock for {prod['name']}")
+                        prod["quantity"] -= cartItem.quantity
+                    
+            with open(filename, "w") as file:
+                json.dump(data, file, indent=2)
+                self.cart.checkOut(customerName, address)
+
         except Exception as e:
             print(f"Checkout failed: {e}")
