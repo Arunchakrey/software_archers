@@ -13,7 +13,7 @@ class OrderManager:
             f.write(f"{order.orderId}, {order.customerId}, {order.orderDate}, {order.total:.2f}\n")
             for item in order.items:
                 f.write(f"  -{item.product.name} x {item.quantity} = ${item.getTotal():.2F}\n")
-            f.write("---------------------------------")
+            f.write("---------------------------------\n")
     
     @staticmethod
     def getNextOrderId(filepath="data/orders.txt") -> int:

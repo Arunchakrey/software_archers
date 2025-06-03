@@ -48,7 +48,7 @@ class Cart:
         shipmentInfo = ShipmentInfo("jack", "12 Hawthorn")
         order = Order(orderId, customerId, shipmentInfo, self)
          
-        OrderManager.saveToFile(order, "orders.txt")
+        OrderManager.saveToFile(order, "data/orders.txt")
          
         self.clearCart()
         
