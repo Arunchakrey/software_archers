@@ -1,6 +1,8 @@
 from model.Cart import Cart
 from model.CartItem import CartItem
 from model.Product import Product
+from model.Receipt import Receipt
+from model.Invoice import Invoice
 from services.OrderManager import OrderManager
 from model.ShipmentInfo import ShipmentInfo
 from services.Payment import Payment
@@ -35,6 +37,9 @@ class CartManager:
         for item in self.cart.items:
             print (f"item:{item.product.name}  x  quantity:{item.quantity}")
         print(f"Total: ${self.getTotal()}")
+
+        invoice = Invoice(self.cart)
+        print(invoice.printInvoice())
     
     def getTotal(self):
         return sum(item.getTotal() for item in self.cart.items)
@@ -66,6 +71,9 @@ class CartManager:
                 shipmentInfo = ShipmentInfo(customerName, address)
                 order = Order(orderId, customerName, shipmentInfo, self.cart)
                 OrderManager.saveToFile(order, "data/orders.txt")
+
+                receipt = Receipt(order)
+                print(receipt.printReceipt())
                 
                 self.clearCart()
                 
