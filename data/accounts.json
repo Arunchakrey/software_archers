@@ -8,8 +8,7 @@
   {
     "type": "admin",
     "username": "admin",
-    "password": "admin123",
-    "access_level": "superuser"
+    "password": "admin123"
   },
   {
     "type": "customer",
