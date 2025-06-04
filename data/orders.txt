@@ -26,11 +26,7 @@
 8, bob, 2025-06-03, 1000.00
   -iPhone 13 x 1 = $1000.00
 ---------------------------------
-9, alice, 2025-06-03, 200.00
-  -<bound method ShipmentInfo.getDeliveryLabel of <model.ShipmentInfo.ShipmentInfo object at 0x000002B3A9D83EF0>>
-  -iPhone 10 x 1 = $200.00
----------------------------------
-10, bob, 2025-06-03, 1000.00, Incomplete
+9, bob, 2025-06-03, 1000.00, Incomplete
   -Customer: bob     Address:3171
   -iPhone 13 x 1 = $1000.00
 ---------------------------------

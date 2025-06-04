@@ -5,7 +5,7 @@ if TYPE_CHECKING:
     from model.Cart import Cart
 
 class Order:
-    def __init__(self, orderId: int, customerId: int, shipmentInfo: ShipmentInfo, cart: "Cart", status: str = "Pending", orderDate: date = date.today()):
+    def __init__(self, orderId: int, customerId: int, shipmentInfo: ShipmentInfo, cart: "Cart", status: str = "Incomplete", orderDate: date = date.today()):
         self.orderId = orderId
         self.customerId = customerId
         self.orderDate = orderDate
@@ -19,7 +19,7 @@ class Order:
             f"Order ID: {self.orderId}\n"
             f"Customer ID: {self.customerId}\n"
             f"Date: {self.orderDate.strftime('%Y-%m-%d')}\n"
-            # f"Status: {self.status}\n"
+            f"Status: {self.status}\n"
             f"Total: ${self.total:.2f}\n"
             "Items:\n"
         )
