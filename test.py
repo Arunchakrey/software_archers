@@ -4,7 +4,7 @@ from services.authenticator import Authenticator
 from services.AccountReader import AccountReader
 from services.Catalogue import Catalogue
 from services.ProductManager import ProductManager
-# from services.CartManager import CartManager
+from services.OrderManager import OrderManager
 
 
 FILENAME = "data/accounts.json"
@@ -112,7 +112,8 @@ while True:
                 print("3. View Cart")
                 print("4. Remove Item from Cart")
                 print("5. Checkout")
-                print("6. Logout")
+                print("6. View orders")
+                print("7. Logout")
                 c_choice = input("Choose an option: ").strip()
 
                 if c_choice == "1":
@@ -146,8 +147,15 @@ while True:
                         account._cartManager.checkout(account.username, address)
                     except Exception as e:
                          print(f"Checkout failed: {e}")
-
+                
                 elif c_choice == "6":
+                    # try:
+                    #     OrderManager.displayOrders(account)
+                    # except Exception as e:
+                    #     print(f"Failed to retrieve orders: {e}")
+                    OrderManager.displayOrders(account)
+
+                elif c_choice == "7":
                     print("Logged out.")
                     break
 

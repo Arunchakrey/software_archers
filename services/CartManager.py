@@ -3,6 +3,7 @@ from model.CartItem import CartItem
 from model.Product import Product
 from services.OrderManager import OrderManager
 from model.ShipmentInfo import ShipmentInfo
+from services.Payment import Payment
 import json
 
 class CartManager:
@@ -56,6 +57,8 @@ class CartManager:
                 from model.Order import Order
                 if not self.cart.items:
                     raise Exception("Cart is empty")
+                
+                Payment.process()
                 
                 orderId = OrderManager.getNextOrderId("data/orders.txt")
                 shipmentInfo = ShipmentInfo(customerName, address)

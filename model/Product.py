@@ -1,10 +1,11 @@
 class Product:
-    def __init__(self, id: int, name: str , price: float, quantity: int, description: str):
-        self.id = id
+    def __init__(self, name: str , price: float, quantity: int, description: str, id: int = None):
+        
         self.name = name
         self.price = price
         self.quantity = quantity
         self.description =description
+        self.id = id
         
     #property
     def getProductName(self):
