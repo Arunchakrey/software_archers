@@ -1,44 +1,44 @@
 [
   {
-    "id": 1,
     "name": "iPhone 13",
-    "price": 12,
-    "quantity": 5,
-    "description": "Apple smartphone"
+    "price": 12.0,
+    "quantity": 3,
+    "description": "Apple smartphone",
+    "id": 1
   },
   {
-    "id": 2,
     "name": "Gaming Chair",
     "price": 250.0,
-    "quantity": 2,
-    "description": "Comfortable gaming chair"
+    "quantity": 10,
+    "description": "Comfortable gaming chair",
+    "id": 2
   },
   {
-    "id": 3,
     "name": "iPhone 10",
     "price": 200.0,
-    "quantity": 10,
-    "description": "Silver, Sleek, Heavy"
+    "quantity": 7,
+    "description": "Silver, Sleek, Heavy",
+    "id": 3
   },
   {
-    "id": 4,
     "name": "hello",
     "price": 123,
     "quantity": 12.0,
-    "description": "adad"
+    "description": "adad",
+    "id": 4
   },
   {
-    "id": 5,
     "name": "hi",
-    "price": 12,
+    "price": 120.0,
     "quantity": 2.0,
-    "description": "oh no"
+    "description": "oh no",
+    "id": 5
   },
   {
-    "id": 6,
     "name": "laptop",
-    "price": 332,
+    "price": 332.0,
     "quantity": 2.0,
-    "description": "yes good"
+    "description": "yes good",
+    "id": 6
   }
 ]

@@ -39,6 +39,7 @@ while True:
                 print("2. Edit Products")
                 print("3. Generate Statistics")
                 print("4. Manage Shipment Status")
+                print("5. log out")
                 a_choice = input("Choose an option: ").strip()
 
                 if a_choice == "1":
@@ -100,8 +101,20 @@ while True:
                         account.generate_sales_report(startDate, endDate)
                     except ValueError:
                         print("Wrong input")
+                elif a_choice == "4":
+                    # try:
+                        orderId = int(input("Enter orderId to edit: ").strip())
+                        print("")
+                        print("1. Update Status to 'Incomplete'")
+                        print("2. Update Status to 'Complete'")
+                        choice = int(input("Choose option: "))
+                        account.updateOrderStatus(orderId, choice)
+                    # except Exception as e:
+                    #     print("Fail to update with:" )
+                
+                elif a_choice == "5":
+                    break
 
-        
         elif isinstance(account, CustomerAccount):
             print(f"Welcome, {account.username}!")
             
@@ -142,7 +155,7 @@ while True:
                         print("Invalid product ID.")
 
                 elif c_choice == "5":
-                    address = input("Enter your address: ")
+                    address = str(input("Enter your address: ")).strip()
                     try:
                         account._cartManager.checkout(account.username, address)
                     except Exception as e:

@@ -22,7 +22,7 @@ class OrderManager:
         """
         with open(filepath, "a") as f:
             # 1) Header: orderId, customerId, orderDate, total
-            f.write(f"{order.orderId}, {order.customerId}, {order.orderDate}, {order.total:.2f}\n")
+            f.write(f"{order.orderId}, {order.customerId}, {order.orderDate}, {order.total:.2f}, {order.status}\n")
             # 2) Shipment line
             shipmentLabel = order.shipmentInfo.getDeliveryLabel()
             f.write(shipmentLabel)
@@ -57,7 +57,58 @@ class OrderManager:
                 return int(parts[0]) + 1
 
         return 1
+    
+    @staticmethod
+    def updateOrderStatus(orderId: int, newStatus: str, filename="data/orders.txt"):
+        
+        try:
+            with open(filename, "r") as f:
+                original_lines = f.readlines()
+        except FileNotFoundError:
+            print(f"File '{filename}' not found.")
+            return False
 
+        updated_lines = []
+        found = False
+        target_id_str = str(orderId)
+
+        for raw in original_lines:
+            # If the line is blank or starts with a dash, leave it unchanged:
+            if not raw.strip() or raw.lstrip().startswith("-"):
+                updated_lines.append(raw)
+                continue
+
+            # Try splitting into exactly five pieces on commas:
+            parts = [p.strip() for p in raw.rstrip("\n").split(",")]
+
+            # Only touch lines that have at least 5 parts (header lines)
+            if len(parts) == 5:
+                curr_id = parts[0]
+                if curr_id == target_id_str and not found:
+                    # Rebuild the header, replacing parts[4] with newStatus.
+                    new_header = f"{parts[0]}, {parts[1]}, {parts[2]}, {parts[3]}, {newStatus}\n"
+                    updated_lines.append(new_header)
+                    found = True
+                    continue
+                else:
+                    # Either it's a different orderId, or we already found one match:
+                    updated_lines.append(raw)
+                    continue
+            else:
+                # If it’s not exactly five parts, it’s not a header—keep it as is:
+                updated_lines.append(raw)
+
+        if not found:
+            print(f"Order ID {orderId} not found in '{filename}'.")
+            return False
+
+        # Write everything back in one shot:
+        with open(filename, "w") as f:
+            f.writelines(updated_lines)
+
+        return True
+                    
+                    
     @staticmethod
     def getOrdersByCustomerName(account, filename="data/orders.txt") -> List[Order]:
         """

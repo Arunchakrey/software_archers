@@ -2,6 +2,7 @@ from model.IAccount import IAccount
 from services.ProductManager import ProductManager
 from services.Catalogue import Catalogue
 from services.StatisticsManager import StatisticsManager
+from services.OrderManager import OrderManager
 
 class AdminAccount(IAccount):
     def __init__(self, username, password, catalogue):
@@ -46,6 +47,16 @@ class AdminAccount(IAccount):
 
     def generate_sales_report(self, start_date: str, end_date: str, top_n: int = None):
         self.statistics_manager.generateStatistics(start_date, end_date, top_n)
+        
+    def updateOrderStatus(self, orderId: int, choice: int):
+        if choice == 1:
+            orderStatus = "Incomplete"
+            OrderManager.updateOrderStatus(orderId, orderStatus)
+        elif choice == 2:
+            orderStatus = "Complete"
+            OrderManager.updateOrderStatus(orderId, orderStatus)
+        else:
+            return "invalid choice"
 
 
     
