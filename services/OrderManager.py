@@ -10,7 +10,7 @@ from model.ShipmentInfo import ShipmentInfo
 
 class OrderManager:
     @staticmethod
-    def saveToFile(order, filepath="orders.txt"):
+    def saveToFile(order, filepath="data/orders.txt"):
         """
         Appends one order to orders.txt with this exact structure:
 
