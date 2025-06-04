@@ -5,7 +5,7 @@
   -Gaming Chair x 1 = $50.00
 ---------------------------------
 2, alice, 2025-05-29, 250.00, Complete
-  -Customer: alice     Address:vic  
+  -Customer: alice     Address:vic 
   -Iphone 10 x 1 = $200.00
   -Gaming Chair x 1 = $50.00
 ---------------------------------
