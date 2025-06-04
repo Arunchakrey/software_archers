@@ -24,7 +24,8 @@ class OrderManager:
             # 1) Header: orderId, customerId, orderDate, total
             f.write(f"{order.orderId}, {order.customerId}, {order.orderDate}, {order.total:.2f}\n")
             # 2) Shipment line
-            f.write(f"  -Customer: {order.customerId}     Address:{order.shipmentInfo.address}\n")
+            shipmentLabel = order.shipmentInfo.getDeliveryLabel()
+            f.write(shipmentLabel)
             # 3) Each item line: "-<product name> x <quantity> = $<line_total>"
             for item in order.items:
                 line_total = item.getTotal()

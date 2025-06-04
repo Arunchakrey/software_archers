@@ -146,14 +146,13 @@ while True:
                     try:
                         account._cartManager.checkout(account.username, address)
                     except Exception as e:
-                         print(f"Checkout failed: {e}")
+                        print(f"Checkout failed: {e}")
                 
                 elif c_choice == "6":
-                    # try:
-                    #     OrderManager.displayOrders(account)
-                    # except Exception as e:
-                    #     print(f"Failed to retrieve orders: {e}")
-                    OrderManager.displayOrders(account)
+                    try:
+                        OrderManager.displayOrders(account)
+                    except Exception as e:
+                         print(f"Failed to retrieve orders: {e}")
 
                 elif c_choice == "7":
                     print("Logged out.")

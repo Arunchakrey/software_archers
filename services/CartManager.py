@@ -40,6 +40,8 @@ class CartManager:
         return sum(item.getTotal() for item in self.cart.items)
 
     def checkout(self, customerName, address, filename="data/products.json"):
+        if not self.cart.items:
+            raise Exception("Cannot place an order: your cart is empty.")
         try:
             with open(filename, "r") as file:
                 data = json.load(file)

@@ -42,4 +42,8 @@
   -Customer: alice     Address:vic
   -Gaming Chair x 2 = $500.00
 ---------------------------------
+
 11, alice, 2025-06-04, 500.00
+-Customer: alice     Address:vic
+  -Gaming Chair x 2 = $500.00
+---------------------------------
