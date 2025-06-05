@@ -5,7 +5,7 @@ from typing import List
 
 from model.Order import Order
 from model.ShipmentInfo import ShipmentInfo
-from services.OrderReader import OrderReader
+from reader.OrderReader import OrderReader
 
 class OrderManager:
     @staticmethod
