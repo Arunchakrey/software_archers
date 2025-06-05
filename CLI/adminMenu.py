@@ -1,5 +1,6 @@
 from model.AdminAccount import AdminAccount
 from services.Catalogue import Catalogue
+from reader.OrderReader import OrderReader
 
 class AdminMenu:
     """
@@ -122,7 +123,10 @@ class AdminMenu:
         """
         Prompt for an order ID, then update its status to Incomplete/Complete.
         """
+
         try:
+            o = OrderReader.readAllOrders()
+            OrderReader.printOrders(o)
             order_id = int(input("Enter order ID to edit status: ").strip())
         except ValueError:
             print("Order ID must be an integer.\n")
@@ -130,22 +134,22 @@ class AdminMenu:
 
         print("\n1. Update Status to 'Incomplete'")
         print("2. Update Status to 'Complete'")
+        
         try:
             status_choice = int(input("Choose option: ").strip())
-            if status_choice == 1:
-                updated = self.account.updateOrderStatus(order_id, status_choice)
-            elif status_choice == 2:
-                updated = self.account.updateOrderStatus(order_id, status_choice)
-            else:
-                print("Invalid choice. Must be 1 or 2.\n")
-                return
+        except ValueError:
+            print("Invalid input: please enter 1 or 2.")
+            return
 
+        if status_choice in [1, 2]:
+            updated = self.account.updateOrderStatus(order_id, status_choice)
             if updated:
                 print(f"Order {order_id} status updated successfully.\n")
             else:
-                print(f"Failed to update status for order {order_id}.\n")
+                print(f"Failed to update order {order_id} status.\n")
+        else:
+            print("Invalid choice. Must be 1 or 2.\n")
+            return
 
-        except ValueError:
-            print("Invalid input. Must be 1 or 2.\n")
 
 

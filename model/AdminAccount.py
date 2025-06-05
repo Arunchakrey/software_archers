@@ -51,12 +51,14 @@ class AdminAccount(IAccount):
     def updateOrderStatus(self, orderId: int, choice: int):
         if choice == 1:
             orderStatus = "Incomplete"
-            OrderManager.updateOrderStatus(orderId, orderStatus)
         elif choice == 2:
             orderStatus = "Complete"
-            OrderManager.updateOrderStatus(orderId, orderStatus)
         else:
-            return "invalid choice"
+            return False
+
+        # Try to update, and return the actual result
+        success = OrderManager.updateOrderStatus(orderId, orderStatus)
+        return success
 
 
     

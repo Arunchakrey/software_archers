@@ -100,7 +100,7 @@ class OrderReader:
                     unit_price = round(line_total / qty, 2)
 
                     # Create a minimal Product stub for the CartItem
-                    prod = Product(prod_name, unit_price, 0, "")
+                    prod = Product(id, prod_name, unit_price, 0, "")
                     cart_item = CartItem(prod, qty)
                     current_cart.items.append(cart_item)
                     continue
@@ -125,6 +125,31 @@ class OrderReader:
             orders.append(current_order)
 
         return orders
+
+    @staticmethod
+    def printOrders(orders: List[Order]):
+        """
+        Nicely prints a list of Order objects.
+        """
+        if not orders:
+            print("No orders found.")
+            return
+
+        for order in orders:
+            print("="*40)
+            print(f"Order ID:   {order.orderId}")
+            print(f"Customer:   {order.customerId}")
+            print(f"Date:       {order.orderDate}")
+            print(f"Status:     {order.status}")
+            print(f"Shipment to: {order.shipmentInfo.customerName}")
+            print(f"Address:     {order.shipmentInfo.deliveryAddress}")
+            print("- Items:")
+            for item in order.items:
+                product = item.product
+                print(f"   {product.name} x {item.quantity} @ ${product.price:.2f} each = ${item.getTotal():.2f}")
+            print(f"Total:      ${order.total:.2f}")
+            print("="*40)
+            print()
 
     @staticmethod
     def getOrdersByCustomer(username: str, filename="data/orders.txt") -> List[Order]:
