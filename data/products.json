@@ -1,44 +1,58 @@
 [
   {
-    "name": "iPhone 13",
-    "price": 12.0,
-    "quantity": 3,
-    "description": "Apple smartphone",
-    "id": 1
+    "_id": 1,
+    "_name": "iPhone 13",
+    "_price": 12.0,
+    "_quantity": 0,
+    "_description": "Apple smartphone"
   },
   {
-    "name": "Gaming Chair",
-    "price": 250.0,
-    "quantity": 8,
-    "description": "Comfortable gaming chair",
-    "id": 2
+    "_id": 2,
+    "_name": "Gaming Chair",
+    "_price": 250.0,
+    "_quantity": 8,
+    "_description": "Comfortable gaming chair"
   },
   {
-    "name": "iPhone 10",
-    "price": 200.0,
-    "quantity": 7,
-    "description": "Silver, Sleek, Heavy",
-    "id": 3
+    "_id": 3,
+    "_name": "iPhone 10",
+    "_price": 200.0,
+    "_quantity": 7,
+    "_description": "Silver, Sleek, Heavy"
   },
   {
-    "name": "hello",
-    "price": 123,
-    "quantity": 12.0,
-    "description": "adad",
-    "id": 4
+    "_id": 4,
+    "_name": "hello",
+    "_price": 123,
+    "_quantity": 12,
+    "_description": "adad"
   },
   {
-    "name": "hi",
-    "price": 120.0,
-    "quantity": 2.0,
-    "description": "oh no",
-    "id": 5
+    "_id": 5,
+    "_name": "hi",
+    "_price": 120.0,
+    "_quantity": 2,
+    "_description": "oh no"
   },
   {
-    "name": "laptop",
-    "price": 332.0,
-    "quantity": 10,
-    "description": "yes good",
-    "id": 6
+    "_id": 6,
+    "_name": "laptop",
+    "_price": 332.0,
+    "_quantity": 10,
+    "_description": "yes good"
+  },
+  {
+    "_id": 7,
+    "_name": "ar",
+    "_price": 21.0,
+    "_quantity": 2,
+    "_description": "ar"
+  },
+  {
+    "_id": 8,
+    "_name": "Fan",
+    "_price": 20.0,
+    "_quantity": 20,
+    "_description": "Cooling device"
   }
 ]

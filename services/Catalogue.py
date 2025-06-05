@@ -2,9 +2,9 @@ from model.Product import Product
 from reader.ProductReader import ProductReader  # adjust to your path
 
 class Catalogue:
-    def __init__(self, json_file='data/products.json'):
+    def __init__(self, jsonFile='data/products.json'):
         self._products: list[Product] = []
-        self._json_file = json_file
+        self._jsonFile = jsonFile
 
     def loadFromFile(self, filepath: str):
         self._products = ProductReader.readFromJson(filepath)
@@ -12,17 +12,17 @@ class Catalogue:
     def listProducts(self):
         self.loadFromFile(filepath='data/products.json')
         for product in self._products:
-            print(f"\n[{product.id}] {product.name} - ${product.price:.2f} ({product.quantity} in stock)")
+            print(f"\n[{product._id}] {product._name} - ${product._price:.2f} ({product._quantity} in stock)")
 
-    def getProductById(self, product_id: int):
+    def getProductById(self, productId: int):
         self.loadFromFile(filepath='data/products.json')
         for product in self._products:
-            if int(product.id) == int(product_id):
+            if int(product._id) == int(productId):
                 return product
         return None
     
 
-    def save_products_to_json(self):
+    def saveProductsToJson(self):
         import json
-        with open(self._json_file, 'w') as file:
+        with open(self._jsonFile, 'w') as file:
             json.dump([vars(prod) for prod in self._products], file, indent=2)

@@ -1,13 +1,12 @@
 from model.CustomerAccount import CustomerAccount
 
-
 class Authenticator:
-    def __init__(self, accounts, account_reader):
+    def __init__(self, accounts, accountReader):
         """
         accounts: list of IAccount instances (either customer's or admin's )
         """
         self._accounts = accounts
-        self._account_reader = account_reader
+        self._accountReader = accountReader
 
     def authenticate(self, username, password):
         """
@@ -33,10 +32,8 @@ class Authenticator:
 
     def signUp(self):
         print("=== Sign Up ===")
-        user_type = "1"
-
         username = input("Username: ").strip()
-        if self.username_exists(username):
+        if self.usernameExists(username):
             print("Username already exists, please choose another.")
             return
         
@@ -45,6 +42,6 @@ class Authenticator:
         account = CustomerAccount(username, password, email)
 
         self._accounts.append(account)
-        self._account_reader.appendAccount(account)
+        self._accountReader.appendAccount(account)
         print(f"Signup successful! welcome, {username}")
 

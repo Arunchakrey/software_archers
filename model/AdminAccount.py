@@ -5,11 +5,11 @@ from manager.StatisticsManager import StatisticsManager
 from manager.OrderManager import OrderManager
 
 class AdminAccount(IAccount):
-    def __init__(self, username, password, catalogue):
+    def __init__(self, username: str, password: str, catalogue: Catalogue):
         self._username = username
         self._password = password
-        self.product_manager = ProductManager(catalogue)
-        self.statistics_manager = StatisticsManager()
+        self._productManager = ProductManager(catalogue)
+        self._statisticsManager = StatisticsManager()
 
     @property
     def username(self):
@@ -19,7 +19,7 @@ class AdminAccount(IAccount):
     def username(self, value):
         self._username = value
 
-    def change_password(self, new_password):
+    def changePassword(self, new_password):
         self._password = new_password
 
     @property
@@ -33,30 +33,18 @@ class AdminAccount(IAccount):
     def displayInfo(self):
         print(f"Admin: {self._username}")
         
-    """ Functions for handling products
-    """
-        
-    def registerProduct(self, *args, **kwargs):
-        self.product_manager.registerProduct(*args, **kwargs)
-
-    def updateProductPrice(self, product_id, new_price):
-        self.product_manager.updatePrice(product_id, new_price)
-
-    def updateProductQuantity(self, product_id, new_quantity):
-        self.product_manager.updateQuantity(product_id, new_quantity)
-
-    def generateSalesReport(self, start_date: str, end_date: str, top_n: int = None):
-        self.statistics_manager.generateStatistics(start_date, end_date, top_n)
-        
     def updateOrderStatus(self, orderId: int, choice: int):
         if choice == 1:
             orderStatus = "Incomplete"
-            OrderManager.updateOrderStatus(orderId, orderStatus)
         elif choice == 2:
             orderStatus = "Complete"
-            OrderManager.updateOrderStatus(orderId, orderStatus)
         else:
-            return "invalid choice"
+            return False
+
+        # Try to update, and return the actual result
+        success = OrderManager.updateOrderStatus(orderId, orderStatus)
+        return success
+
 
 
     

@@ -1,5 +1,5 @@
 import json
-from model.Product import Product  # adjust import path based on your structure
+from model.Product import Product
 
 class ProductReader:
     @staticmethod
@@ -10,11 +10,11 @@ class ProductReader:
                 data = json.load(file)
                 for item in data:
                     product = Product(
-                        id=item["id"],
-                        name=item["name"],
-                        price=item["price"],
-                        quantity=item["quantity"],
-                        description=item["description"]
+                        id=item["_id"],
+                        name=item["_name"],
+                        price=item["_price"],
+                        quantity=int(item["_quantity"]),
+                        description=item["_description"]
                     )
                     products.append(product)
         except FileNotFoundError:

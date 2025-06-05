@@ -10,75 +10,72 @@ import json
 
 class CartManager:
     def __init__(self, cart: Cart):
-        self.cart = cart
+        self._cart = cart
 
     def addToCart(self, product: Product, quantity: int):  
         if not product.isInStock(quantity):
-            return f"{product.name} is not available"
+            return f"{product._name} is not available"
         
-        for item in self.cart.items:
-            if item.product.id == product.id:
-                item.quantity = quantity
+        for item in self._cart._items:
+            if item._product._id == product._id:
+                item._quantity = quantity
                 break
         else:
-            cart_item = CartItem(product, quantity)
-            self.cart.items.append(cart_item)
-        return (f"Added {quantity} x {product.name} to your cart.")
+            cartItem = CartItem(product, quantity)
+            self._cart._items.append(cartItem)
+        return f"Added {quantity} x {product._name} to your cart."
 
     def removeFromCart(self, productId: int):
-        self.cart.items = [item for item in self.cart.items if item.product.id != productId]
+        self._cart._items = [item for item in self._cart._items if item._product._id != productId]
     
     def clearCart(self):
-        self.cart.items = []
-        return self.cart.items
+        self._cart._items = []
+        return self._cart._items
         
     def viewCart(self):
         print("Cart contents:")
-        for item in self.cart.items:
-            print (f"item:{item.product.name}  x  quantity:{item.quantity}")
+        for item in self._cart._items:
+            print(f"item: {item._product._name}  x  quantity: {item._quantity}")
         print(f"Total: ${self.getTotal()}")
 
-        invoice = Invoice(self.cart)
+        invoice = Invoice(self._cart)
         print(invoice.printInvoice())
     
     def getTotal(self):
-        return sum(item.getTotal() for item in self.cart.items)
+        return sum(item.getTotal() for item in self._cart._items)
 
     def checkout(self, customerName, address, filename="data/products.json"):
-        if not self.cart.items:
+        if not self._cart._items:
             raise Exception("Cannot place an order: your cart is empty.")
         try:
             with open(filename, "r") as file:
                 data = json.load(file)
                 
-            for cartItem in self.cart.items:
+            for cartItem in self._cart._items:
                 for prod in data:
-                    if prod["id"] == cartItem.product.id:
-                        if prod["quantity"] < cartItem.quantity:
-                            raise ValueError(f"Not enough stock for {prod['name']}")
-                        prod["quantity"] -= cartItem.quantity
+                    if prod["_id"] == cartItem._product._id:
+                        if prod["_quantity"] < cartItem._quantity:
+                            raise ValueError(f"Not enough stock for {prod['_name']}")
+                        prod["_quantity"] -= cartItem._quantity
                     
             with open(filename, "w") as file:
                 json.dump(data, file, indent=2)
                 
-                from model.Order import Order
-                if not self.cart.items:
-                    raise Exception("Cart is empty")
-                
-                Payment.process()
-                
-                orderId = OrderManager.getNextOrderId("data/orders.txt")
-                shipmentInfo = ShipmentInfo(customerName, address)
-                order = Order(orderId, customerName, shipmentInfo, self.cart)
-                OrderManager.saveToFile(order, "data/orders.txt")
+            from model.Order import Order
+            
+            Payment.process()
+            
+            orderId = OrderManager.getNextOrderId("data/orders.txt")
+            shipmentInfo = ShipmentInfo(customerName, address)
+            order = Order(orderId, customerName, shipmentInfo, self._cart)
+            
+            OrderManager.saveToFile(order, "data/orders.txt")
 
-                receipt = Receipt(order)
-                print(receipt.printReceipt())
-                
-                self.clearCart()
-                
-                print(f"Order {orderId} placed successfully.")
-                return order
+            receipt = Receipt(order)
+            print(receipt.printReceipt())
+            self.clearCart()
+            print(f"Order {orderId} placed successfully.")
+            return order
 
         except Exception as e:
             print(f"Checkout failed: {e}")

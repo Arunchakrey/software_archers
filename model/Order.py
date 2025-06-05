@@ -12,18 +12,17 @@ class Order:
         self._status = status
         self._shipmentInfo = shipmentInfo
         self._total = cart.getTotal()
-        self._items = cart.items.copy()
-        
+        self._items = cart._items.copy()
+
     def getOrderSummary(self) -> str:
         summary = (
-            f"Order ID: {self.orderId}\n"
-            f"Customer ID: {self.customerId}\n"
-            f"Date: {self.orderDate.strftime('%Y-%m-%d')}\n"
-            f"Status: {self.status}\n"
-            f"Total: ${self.total:.2f}\n"
+            f"Order ID: {self._orderId}\n"
+            f"Customer ID: {self._customerId}\n"
+            f"Date: {self._orderDate.strftime('%Y-%m-%d')}\n"
+            f"Status: {self._status}\n"
+            f"Total: ${self._total:.2f}\n"
             "Items:\n"
         )
-        for item in self.items:
-            summary += f"  - {item.product.name} x{item.quantity} = ${item.getTotal()}\n"
+        for item in self._items:
+            summary += f"  - {item._product._name} x{item._quantity} = ${item.getTotal():.2f}\n"
         return summary
-    

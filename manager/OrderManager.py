@@ -20,18 +20,10 @@ class OrderManager:
         ---------------------------------
         """
         with open(filepath, "a") as f:
-            # 1) Header line
-            f.write(f"{order.orderId}, {order.customerId}, {order.orderDate}, {order.total:.2f}, {order.status}\n")
-
-            # 2) Shipment line
-            f.write(order.shipmentInfo.getDeliveryLabel())
-
-            # 3) Each item line
-            for item in order.items:
-                line_total = item.getTotal()
-                f.write(f"  -{item.product.name} x {item.quantity} = ${line_total:.2f}\n")
-
-            # 4) Separator
+            f.write(f"{order._orderId}, {order._customerId}, {order._orderDate}, {order._total:.2f}, {order._status}\n")
+            f.write(order._shipmentInfo.getDeliveryLabel())
+            for item in order._items:
+                f.write(f"  -{item._product._name} x {item._quantity} = ${item.getTotal():.2f}\n")
             f.write("---------------------------------\n")
 
     @staticmethod
@@ -40,11 +32,11 @@ class OrderManager:
         Returns (max existing orderId + 1). If file missing or empty, returns 1.
         Relies on OrderReader.readAllOrders().
         """
-        all_orders = OrderReader.readAllOrders(filepath)
-        if not all_orders:
+        allOrder = OrderReader.readAllOrders(filepath)
+        if not allOrder:
             return 1
-        max_id = max(o.orderId for o in all_orders)
-        return max_id + 1
+        maxId = max(o._orderId for o in allOrder)
+        return maxId + 1
 
     @staticmethod
     def updateOrderStatus(orderId: int, newStatus: str, filename="data/orders.txt") -> bool:
@@ -52,34 +44,24 @@ class OrderManager:
         Reads all orders via OrderReader, updates the matching order’s status in memory,
         then rewrites the entire file with the new statuses. Returns True on success, False if not found.
         """
-        # 1) Read all existing orders
-        all_orders = OrderReader.readAllOrders(filename)
-
+        allOrders = OrderReader.readAllOrders(filename)
         found = False
-        for o in all_orders:
-            if o.orderId == orderId:
-                o.status = newStatus
+        for o in allOrders:
+            if o._orderId == orderId:
+                o._status = newStatus
                 found = True
                 break
-
         if not found:
             print(f"Order ID {orderId} not found in '{filename}'.")
             return False
 
-        # 2) Rewrite the entire file with updated statuses
         with open(filename, "w") as f:
-            for o in all_orders:
-                # Header
-                f.write(f"{o.orderId}, {o.customerId}, {o.orderDate}, {o.total:.2f}, {o.status}\n")
-                # Shipment
-                f.write(o.shipmentInfo.getDeliveryLabel())
-                # Items
-                for item in o.items:
-                    line_total = item.getTotal()
-                    f.write(f"  -{item.product.name} x {item.quantity} = ${line_total:.2f}\n")
-                # Separator
+            for o in allOrders:
+                f.write(f"{o._orderId}, {o._customerId}, {o._orderDate}, {o._total:.2f}, {o._status}\n")
+                f.write(o._shipmentInfo.getDeliveryLabel())
+                for item in o._items:
+                    f.write(f"  -{item._product._name} x {item._quantity} = ${item.getTotal():.2f}\n")
                 f.write("---------------------------------\n")
-
         return True
 
     @staticmethod
@@ -88,7 +70,7 @@ class OrderManager:
         Returns a list of Order objects for which order.customerId == account.username.
         Simply delegates to OrderReader.getOrdersByCustomer().
         """
-        return OrderReader.getOrdersByCustomer(account.username, filename)
+        return OrderReader.getOrdersByCustomer(account._username, filename)
 
     @staticmethod
     def displayOrders(account):
@@ -100,7 +82,7 @@ class OrderManager:
             print("No past orders found.")
             return
 
-        print(f"\n=== Past Orders for {account.username} ===")
+        print(f"\n=== Past Orders for {account._username} ===")
         for order in orders:
             print(order.getOrderSummary())
             print()  # blank line between orders

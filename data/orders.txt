@@ -1,4 +1,4 @@
-1, alice, 2025-05-28, 250.00, Complete
+1, alice, 2025-05-28, 250.00, Incomplete
   -Customer: alice     Address:vic
   -Iphone 10 x 1 = $200.00
   -Gaming Chair x 1 = $50.00
@@ -55,11 +55,11 @@
   -iPhone 10 x 1 = $200.00
   -iPhone 13 x 2 = $24.00
 ---------------------------------
-14, alice, 2025-06-05, 664.00, Incomplete
+14, alice, 2025-06-05, 664.00, Complete
   -Customer: alice     Address:vic
   -laptop x 2 = $664.00
 ---------------------------------
-15, alice, 2025-06-05, 500.00, Incomplete
+15, alice, 2025-06-05, 500.00, Complete
   -Customer: alice     Address:vic
   -Gaming Chair x 2 = $500.00
 ---------------------------------

@@ -1,1 +1,34 @@
-<mxGraphModel><root><mxCell id="0"/><mxCell id="1" parent="0"/></root></mxGraphModel>
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" version="27.1.4">
+  <diagram name="Page-1" id="ewtyFBpQmC7PQ8GyPPks">
+    <mxGraphModel dx="868" dy="497" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="gdw9eFPZmKmg1WSKYvkV-1" value="CustomerMenu" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="150" width="240" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="gdw9eFPZmKmg1WSKYvkV-2" value="&lt;div&gt;-_account: CustomerAccount&lt;/div&gt;&lt;div&gt;-_catalogue: Catalogue&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="gdw9eFPZmKmg1WSKYvkV-1">
+          <mxGeometry y="26" width="240" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="gdw9eFPZmKmg1WSKYvkV-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="gdw9eFPZmKmg1WSKYvkV-1">
+          <mxGeometry y="70" width="240" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="gdw9eFPZmKmg1WSKYvkV-4" value="&lt;div&gt;+__init__(account: CustomerAccount, catalogue: Catalogue)&lt;/div&gt;&lt;div&gt;+run(): void&lt;/div&gt;&lt;div&gt;+viewOrders(): void&lt;/div&gt;&lt;div&gt;+checkout(): void&lt;/div&gt;&lt;div&gt;+removeFromCart(): void&lt;/div&gt;&lt;div&gt;+addToCart(): void&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="gdw9eFPZmKmg1WSKYvkV-1">
+          <mxGeometry y="78" width="240" height="132" as="geometry" />
+        </mxCell>
+        <mxCell id="gdw9eFPZmKmg1WSKYvkV-5" value="AdminMenu" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="540" y="150" width="260" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="gdw9eFPZmKmg1WSKYvkV-6" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="gdw9eFPZmKmg1WSKYvkV-5">
+          <mxGeometry y="26" width="260" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="gdw9eFPZmKmg1WSKYvkV-7" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="gdw9eFPZmKmg1WSKYvkV-5">
+          <mxGeometry y="52" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="gdw9eFPZmKmg1WSKYvkV-8" value="+__init__(account: AdminAccount, catalouge: Catalouge, products_filename: str)&lt;div&gt;+run(): void&lt;/div&gt;&lt;div&gt;+editProducts(): void&lt;/div&gt;&lt;div&gt;+generateStatistics(): void&lt;/div&gt;&lt;div&gt;+manageShipmentStatus(): void&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="gdw9eFPZmKmg1WSKYvkV-5">
+          <mxGeometry y="60" width="260" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
