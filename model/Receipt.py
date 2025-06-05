@@ -3,11 +3,11 @@ from typing import List
 
 class Receipt:
     def __init__(self, order: Order):
-        self.orderId: int = order.orderId
-        self.name: str = order.shipmentInfo.customerName
-        self.address: str = order.shipmentInfo.deliveryAddress
-        self.total: float = order.total
-        self.orderSummary: List = order.items
+        self._orderId: int = order.orderId
+        self._name: str = order.shipmentInfo.customerName
+        self._address: str = order.shipmentInfo.deliveryAddress
+        self._total: float = order.total
+        self._orderSummary: List = order.items
 
     def printReceipt(self):
         receipt = (

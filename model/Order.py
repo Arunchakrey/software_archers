@@ -6,13 +6,13 @@ if TYPE_CHECKING:
 
 class Order:
     def __init__(self, orderId: int, customerId: int, shipmentInfo: ShipmentInfo, cart: "Cart", status: str = "Incomplete", orderDate: date = date.today()):
-        self.orderId = orderId
-        self.customerId = customerId
-        self.orderDate = orderDate
-        self.status = status
-        self.shipmentInfo = shipmentInfo
-        self.total = cart.getTotal()
-        self.items = cart.items.copy()
+        self._orderId = orderId
+        self._customerId = customerId
+        self._orderDate = orderDate
+        self._status = status
+        self._shipmentInfo = shipmentInfo
+        self._total = cart.getTotal()
+        self._items = cart.items.copy()
         
     def getOrderSummary(self) -> str:
         summary = (

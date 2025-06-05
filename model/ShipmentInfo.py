@@ -1,7 +1,7 @@
 class ShipmentInfo:
     def __init__(self, customerName: str, deliveryAddress: str):
-        self.customerName = customerName
-        self.deliveryAddress = deliveryAddress
+        self._customerName = customerName
+        self._deliveryAddress = deliveryAddress
     
     def getDeliveryLabel(self) -> str:
-        return (f"  -Customer: {self.customerName}     Address:{self.deliveryAddress}\n")
+        return (f"  -Customer: {self._customerName}     Address:{self._deliveryAddress}\n")

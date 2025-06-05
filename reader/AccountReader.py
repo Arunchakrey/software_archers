@@ -10,7 +10,7 @@ class AccountReader:
         self.catalogue = Catalogue()
         self.catalogue.loadFromFile("data/products.json")
 
-    def read_accounts(self):
+    def readAccounts(self):
         accounts = []
         if not os.path.exists(self._filename):
             return accounts
@@ -24,7 +24,7 @@ class AccountReader:
 
         return accounts
     
-    def append_account(self, account):
+    def appendAccount(self, account):
         data = []
         if os.path.exists(self._filename):
             with open(self._filename, "r") as file:

@@ -30,22 +30,22 @@ class AdminAccount(IAccount):
     def access_level(self, value):
         self._access_level = value
 
-    def display_info(self):
+    def displayInfo(self):
         print(f"Admin: {self._username}")
         
     """ Functions for handling products
     """
         
-    def register_product(self, *args, **kwargs):
-        self.product_manager.register_product(*args, **kwargs)
+    def registerProduct(self, *args, **kwargs):
+        self.product_manager.registerProduct(*args, **kwargs)
 
-    def update_product_price(self, product_id, new_price):
-        self.product_manager.update_price(product_id, new_price)
+    def updateProductPrice(self, product_id, new_price):
+        self.product_manager.updatePrice(product_id, new_price)
 
-    def update_product_quantity(self, product_id, new_quantity):
-        self.product_manager.update_quantity(product_id, new_quantity)
+    def updateProductQuantity(self, product_id, new_quantity):
+        self.product_manager.updateQuantity(product_id, new_quantity)
 
-    def generate_sales_report(self, start_date: str, end_date: str, top_n: int = None):
+    def generateSalesReport(self, start_date: str, end_date: str, top_n: int = None):
         self.statistics_manager.generateStatistics(start_date, end_date, top_n)
         
     def updateOrderStatus(self, orderId: int, choice: int):

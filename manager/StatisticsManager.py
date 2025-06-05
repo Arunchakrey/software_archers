@@ -4,8 +4,8 @@ import re
 
 class StatisticsManager:
     def __init__(self):
-        self.totalSales = 0.0
-        self.topSellingProducts = []
+        self._totalSales = 0.0
+        self._topSellingProducts = []
 
     def analyzeSales(self, startDate, endDate, filename="data/orders.txt"):
         HEADER_RE = re.compile(
@@ -36,7 +36,7 @@ class StatisticsManager:
                 totalSales += float(m_header.group(4))
 
         print(f"Total revenue from {startDate} to {endDate} is ${totalSales:.2f}")
-        self.totalSales = totalSales
+        self._totalSales = totalSales
         return totalSales
 
     def captureProducts(self, startDate, endDate, filename="data/orders.txt"):
@@ -113,11 +113,11 @@ class StatisticsManager:
         start = datetime.strptime(startDate, "%Y-%m-%d").date()
         end = datetime.strptime(endDate, "%Y-%m-%d").date()
 
-        self.totalSales = self.analyzeSales(start, end)
-        self.topSellingProducts = self.findTopSellingProducts(start, end, top_n)
+        self._totalSales = self.analyzeSales(start, end)
+        self._topSellingProducts = self.findTopSellingProducts(start, end, top_n)
 
         print(f"\nTop {top_n if top_n else 'all'} selling products:")
-        for name, data in self.topSellingProducts:
+        for name, data in self._topSellingProducts:
             avg_unit = (
                 round(sum(data["unit_price"]) / len(data["unit_price"]), 2)
                 if data["unit_price"] else 0.00

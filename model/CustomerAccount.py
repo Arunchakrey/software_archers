@@ -32,5 +32,5 @@ class CustomerAccount(IAccount):
     def email(self, value):
         self.email = value
 
-    def display_info(self):
+    def displayInfo(self):
         print(f"Customer: {self._username}, Email: {self._email}")

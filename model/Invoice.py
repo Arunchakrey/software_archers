@@ -3,8 +3,8 @@ from typing import List
 
 class Invoice:
     def __init__(self, cart: Cart):
-        self.total: float = cart.getTotal()
-        self.items: List = cart.items
+        self._total: float = cart.getTotal()
+        self._items: List = cart.items
 
     def printInvoice(self):
         invoice = (

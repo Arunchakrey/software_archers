@@ -7,7 +7,7 @@ class Authenticator:
         accounts: list of IAccount instances (either customer's or admin's )
         """
         self._accounts = accounts
-        self.account_reader = account_reader
+        self._account_reader = account_reader
 
     def authenticate(self, username, password):
         """
@@ -15,23 +15,23 @@ class Authenticator:
         """
         for acc in self._accounts:
             # For demo: directly accessing _username/_password (could use getters/setters or make a check_password method)
-            if acc.username == username and acc._password == password:
+            if acc._username == username and acc._password == password:
                 print(f"Login successful: {username}")
                 return acc
         print("Login failed.")
         return None
     
-    def register_account(self, account):
+    def registerAccount(self, account):
         """
         Adds a new account. You may add duplicate-checking logic.
         """
         self._accounts.append(account)
         print(f"Account registered: {account.username}")
 
-    def username_exists(self, username):
+    def usernameExists(self, username):
         return any(acc.username == username for acc in self._accounts)
 
-    def signup(self):
+    def signUp(self):
         print("=== Sign Up ===")
         user_type = "1"
 
@@ -45,6 +45,6 @@ class Authenticator:
         account = CustomerAccount(username, password, email)
 
         self._accounts.append(account)
-        self.account_reader.append_account(account)
+        self._account_reader.appendAccount(account)
         print(f"Signup successful! welcome, {username}")
 

@@ -2,8 +2,8 @@ from model.Product import Product
 
 class CartItem:
     def __init__(self, product: Product, quantity: int):
-        self.product = product
-        self.quantity = quantity
+        self._product = product
+        self._quantity = quantity
 #property
     def setQuantity(self, value):
         self.quantity = value
