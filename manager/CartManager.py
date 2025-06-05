@@ -3,7 +3,7 @@ from model.CartItem import CartItem
 from model.Product import Product
 from model.Receipt import Receipt
 from model.Invoice import Invoice
-from services.OrderManager import OrderManager
+from manager.OrderManager import OrderManager
 from model.ShipmentInfo import ShipmentInfo
 from services.Payment import Payment
 import json
