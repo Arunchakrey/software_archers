@@ -9,7 +9,7 @@
   {
     "name": "Gaming Chair",
     "price": 250.0,
-    "quantity": 10,
+    "quantity": 8,
     "description": "Comfortable gaming chair",
     "id": 2
   },
@@ -37,7 +37,7 @@
   {
     "name": "laptop",
     "price": 332.0,
-    "quantity": 2.0,
+    "quantity": 10,
     "description": "yes good",
     "id": 6
   }

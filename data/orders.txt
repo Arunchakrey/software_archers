@@ -1,11 +1,10 @@
-#order id, Customer Name, order date, total
 1, alice, 2025-05-28, 250.00, Complete
   -Customer: alice     Address:vic
   -Iphone 10 x 1 = $200.00
   -Gaming Chair x 1 = $50.00
 ---------------------------------
 2, alice, 2025-05-29, 250.00, Complete
-  -Customer: alice     Address:vic 
+  -Customer: alice     Address:vic
   -Iphone 10 x 1 = $200.00
   -Gaming Chair x 1 = $50.00
 ---------------------------------
@@ -14,7 +13,7 @@
   -Iphone 10 x 1 = $200.00
   -Gaming Chair x 1 = $50.00
 ---------------------------------
-4, alice, 2025-05-31,250.00, Incomplete
+4, alice, 2025-05-31, 250.00, Incomplete
   -Customer: alice     Address:vic
   -Iphone 10 x 1 = $200.00
   -Gaming Chair x 1 = $50.00
@@ -31,7 +30,8 @@
   -Customer: alice     Address:vic
   -Gaming Chair x 2 = $500.00
 ---------------------------------
-8, bob, 2025-06-03, 1000.00
+8, bob, 2025-06-03, 1000.00, Incomplete
+  -Customer: bob     Address:3171
   -iPhone 13 x 1 = $1000.00
 ---------------------------------
 9, bob, 2025-06-03, 1000.00, Incomplete
@@ -42,12 +42,11 @@
   -Customer: alice     Address:vic
   -Gaming Chair x 2 = $500.00
 ---------------------------------
-
 11, alice, 2025-06-04, 500.00, Incomplete
   -Customer: alice     Address:vic
   -Gaming Chair x 2 = $500.00
 ---------------------------------
-12, alice, 2025-06-04, 400.00, Incomplete
+12, alice, 2025-06-04, 400.00, Complete
   -Customer: alice     Address:vic
   -iPhone 10 x 2 = $400.00
 ---------------------------------
@@ -55,4 +54,12 @@
   -Customer: alice     Address:vic
   -iPhone 10 x 1 = $200.00
   -iPhone 13 x 2 = $24.00
+---------------------------------
+14, alice, 2025-06-05, 664.00, Incomplete
+  -Customer: alice     Address:vic
+  -laptop x 2 = $664.00
+---------------------------------
+15, alice, 2025-06-05, 500.00, Incomplete
+  -Customer: alice     Address:vic
+  -Gaming Chair x 2 = $500.00
 ---------------------------------

@@ -1,0 +1,4 @@
+Invoice:
+Amount Due: $500.00
+Items: 
+  - Gaming Chair x2 = $500.00

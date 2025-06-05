@@ -1,20 +1,63 @@
-from model.Cart import Cart
-from model.Product import Product
+from model.CustomerAccount import CustomerAccount
+from model.AdminAccount import AdminAccount
+from services.authenticator import Authenticator
+from services.AccountReader import AccountReader
+from services.Catalogue import Catalogue
+from CLI.AdminMenu import AdminMenu
+from CLI.CustomerMenu import CustomerMenu
 
-# initialise products (self, id, name, price, quantity, description):
-computer= Product(1, "Computer 1", 100, 5, "Black, Fast, Mobile")
-phone = Product(2, "Iphone 10", 200, 10, "Silver, Sleek, Heavy")
-chair = Product(3, "Gaming Chair", 50, 3, "Comfortable")
+FILENAME = "data/accounts.json"
+PRODUCTS_FILENAME = "data/products.json"
 
-#Cart
-cart_1 = Cart()
+def main():
+    account_reader = AccountReader(FILENAME)
+    accounts = account_reader.read_accounts()
 
-cart_1.addItem(computer, 1)
-cart_1.addItem(phone, 1)
-cart_1.addItem(chair, 1)
+    # Note: Authenticator’s constructor expects (list_of_accounts, account_reader)
+    login_processor = Authenticator(accounts, account_reader)
 
-cart_1.removeItem(1)
+    while True:
+        print("\n=== Welcome to AWE Electronics ===")
+        print("1. Login")
+        print("2. Sign Up")
+        print("3. Exit")
 
-cart_1.displayCart()
+        choice = input("Select an option: ").strip()
+        if choice == "1":
+            username = input("Username: ").strip()
+            password = input("Password: ").strip()
+            account = login_processor.authenticate(username, password)
 
-cart_1.checkOut(2)
+            if not account:
+                print("Login failed. Invalid credentials.\n")
+                continue
+
+            # Show basic “you’re logged in” info
+            account.display_info()
+
+            # Always load the latest catalogue
+            catalogue = Catalogue()
+            catalogue.loadFromFile(PRODUCTS_FILENAME)
+
+            # Dispatch to the correct menu
+            if isinstance(account, AdminAccount):
+                AdminMenu(account, catalogue, PRODUCTS_FILENAME).run()
+
+            elif isinstance(account, CustomerAccount):
+                CustomerMenu(account, catalogue).run()
+
+            else:
+                print("Unknown account type.\n")
+
+        elif choice == "2":
+            login_processor.signup()
+
+        elif choice == "3":
+            print("Goodbye!")
+            break
+
+        else:
+            print("Invalid option. Please choose 1, 2, or 3.\n")
+
+if __name__ == "__main__":
+    main()
