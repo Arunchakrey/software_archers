@@ -1,10 +1,10 @@
 from model.CustomerAccount import CustomerAccount
 from model.AdminAccount import AdminAccount
-from services.authenticator import Authenticator
-from services.AccountReader import AccountReader
+from services.Authenticator import Authenticator
+from reader.AccountReader import AccountReader
 from services.Catalogue import Catalogue
-from services.ProductManager import ProductManager
-from services.OrderManager import OrderManager
+from manager.ProductManager import ProductManager
+from manager.OrderManager import OrderManager
 
 
 FILENAME = "data/accounts.json"

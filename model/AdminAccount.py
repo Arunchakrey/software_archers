@@ -1,8 +1,8 @@
 from model.IAccount import IAccount
-from services.ProductManager import ProductManager
+from manager.ProductManager import ProductManager
 from services.Catalogue import Catalogue
-from services.StatisticsManager import StatisticsManager
-from services.OrderManager import OrderManager
+from manager.StatisticsManager import StatisticsManager
+from manager.OrderManager import OrderManager
 
 class AdminAccount(IAccount):
     def __init__(self, username, password, catalogue):

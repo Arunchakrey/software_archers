@@ -1,5 +1,5 @@
 from model.IAccount import IAccount
-from services.CartManager import CartManager
+from manager.CartManager import CartManager
 from model.Cart import Cart
 
 class CustomerAccount(IAccount):

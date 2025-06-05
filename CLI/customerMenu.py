@@ -1,6 +1,6 @@
 from model.CustomerAccount import CustomerAccount
 from services.Catalogue import Catalogue
-from services.OrderManager import OrderManager
+from manager.OrderManager import OrderManager
 
 class CustomerMenu:
     """

@@ -1,5 +1,5 @@
 from model.Product import Product
-from services.ProductReader import ProductReader  # adjust to your path
+from reader.ProductReader import ProductReader  # adjust to your path
 
 class Catalogue:
     def __init__(self, json_file='data/products.json'):

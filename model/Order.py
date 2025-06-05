@@ -3,7 +3,6 @@ from model.ShipmentInfo import ShipmentInfo
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from model.Cart import Cart
-    from services.CartManager import CartManager
 
 class Order:
     def __init__(self, orderId: int, customerId: int, shipmentInfo: ShipmentInfo, cart: "Cart", status: str = "Incomplete", orderDate: date = date.today()):
