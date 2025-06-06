@@ -67,3 +67,11 @@
   -Customer: alice     Address:vic
   -fan x 10 = $800.00
 ---------------------------------
+17, visal, 2025-06-06, 250.00, Complete
+  -Customer: visal     Address:home
+  -Gaming Chair x 1 = $250.00
+---------------------------------
+18, bill, 2025-06-06, 664.00, Complete
+  -Customer: bill     Address:home
+  -laptop x 2 = $664.00
+---------------------------------

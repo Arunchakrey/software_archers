@@ -21,5 +21,29 @@
     "username": "Jackie",
     "password": "kungfupanda",
     "email": "bunbohue@pumpkin.com"
+  },
+  {
+    "type": "customer",
+    "username": "sal",
+    "password": "sal123",
+    "email": "heng.rvisal@gmail.com"
+  },
+  {
+    "type": "customer",
+    "username": "sal1",
+    "password": "sal123",
+    "email": "heng.rvisal@gmail.com"
+  },
+  {
+    "type": "customer",
+    "username": "visal",
+    "password": "visal123",
+    "email": "heng.rvisal2@gmail.com"
+  },
+  {
+    "type": "customer",
+    "username": "bill",
+    "password": "bill123",
+    "email": "bill@gmail.com"
   }
 ]

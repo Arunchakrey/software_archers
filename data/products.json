@@ -10,7 +10,7 @@
     "_id": 2,
     "_name": "Gaming Chair",
     "_price": 250.0,
-    "_quantity": 8,
+    "_quantity": 7,
     "_description": "Comfortable gaming chair"
   },
   {
@@ -22,44 +22,16 @@
   },
   {
     "_id": 4,
-    "_name": "hello",
-    "_price": 123,
-    "_quantity": 12,
-    "_description": "adad"
-  },
-  {
-    "_id": 5,
-    "_name": "hi",
-    "_price": 120.0,
-    "_quantity": 2,
-    "_description": "oh no"
-  },
-  {
-    "_id": 6,
     "_name": "laptop",
     "_price": 332.0,
-    "_quantity": 10,
+    "_quantity": 8,
     "_description": "yes good"
   },
   {
-    "_id": 7,
-    "_name": "ar",
-    "_price": 21.0,
-    "_quantity": 2,
-    "_description": "ar"
-  },
-  {
-    "_id": 9,
-    "_name": "AK47",
-    "_price": 2.0,
-    "_quantity": 20,
-    "_description": "Blasting"
-  },
-  {
-    "_id": 8,
-    "_name": "fan",
-    "_price": 80.0,
-    "_quantity": 0,
-    "_description": "cooling"
+    "_id": 5,
+    "_name": "samsung s20",
+    "_price": 2000.0,
+    "_quantity": 12,
+    "_description": "better than iphone"
   }
 ]

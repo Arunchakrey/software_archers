@@ -1,4 +1,4 @@
 Invoice:
-Amount Due: $800.00
+Amount Due: $664.00
 Items:
-  - fan x10 = $800.00
+  - laptop x2 = $664.00

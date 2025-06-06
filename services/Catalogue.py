@@ -13,6 +13,7 @@ class Catalogue:
         self.loadFromFile(filepath='data/products.json')
         for product in self._products:
             print(f"\n[{product._id}] {product._name} - ${product._price:.2f} ({product._quantity} in stock)")
+            print(product._description)
 
     def getProductById(self, productId: int):
         self.loadFromFile(filepath='data/products.json')

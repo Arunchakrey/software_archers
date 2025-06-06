@@ -1,7 +1,7 @@
 RECEIPT:
-Order ID: 16
-Customer Name: alice
-Address: vic
-Total: $800.00
+Order ID: 18
+Customer Name: bill
+Address: home
+Total: $664.00
 Items:
-  - fan x10 = $800.00
+  - laptop x2 = $664.00
