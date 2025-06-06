@@ -1,4 +1,4 @@
 Invoice:
-Amount Due: $500.00
-Items: 
-  - Gaming Chair x2 = $500.00
+Amount Due: $800.00
+Items:
+  - fan x10 = $800.00

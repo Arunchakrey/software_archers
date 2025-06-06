@@ -1,6 +1,7 @@
 RECEIPT:
-Order ID: 15Customer Name: bob
-Address: 3123
-Total: 250.00
-Items: 
-  - Gaming Chair x1 = $250.00
+Order ID: 16
+Customer Name: alice
+Address: vic
+Total: $800.00
+Items:
+  - fan x10 = $800.00

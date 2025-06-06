@@ -59,7 +59,11 @@
   -Customer: alice     Address:vic
   -laptop x 2 = $664.00
 ---------------------------------
-15, alice, 2025-06-05, 500.00, Complete
+15, alice, 2025-06-05, 500.00, Incomplete
   -Customer: alice     Address:vic
   -Gaming Chair x 2 = $500.00
+---------------------------------
+16, alice, 2025-06-06, 800.00, Incomplete
+  -Customer: alice     Address:vic
+  -fan x 10 = $800.00
 ---------------------------------

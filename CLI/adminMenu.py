@@ -112,7 +112,8 @@ class AdminMenu:
         try:
             startDate = input("Enter start date (YYYY-MM-DD): ").strip()
             endDate = input("Enter end date (YYYY-MM-DD): ").strip()
-            self._account.generateSalesReport(startDate, endDate) #edit
+            topN = input("Enter the number of top selling products: (leave blank if want to see all)")
+            self._account._statisticsManager.generateStatistics(startDate, endDate, topN) #edit
         except ValueError:
             print("Invalid date format. Please use YYYY-MM-DD.\n")
 

@@ -49,11 +49,17 @@
     "_description": "ar"
   },
   {
-    "_id": 8,
-    "_name": "Fan",
-    "_price": 20.0,
+    "_id": 9,
+    "_name": "AK47",
+    "_price": 2.0,
     "_quantity": 20,
-    "_description": "Cooling device"
-
+    "_description": "Blasting"
+  },
+  {
+    "_id": 8,
+    "_name": "fan",
+    "_price": 80.0,
+    "_quantity": 0,
+    "_description": "cooling"
   }
 ]

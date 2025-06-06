@@ -15,7 +15,7 @@ class CustomerMenu:
         """
         Runs the customer menu loop until the customer chooses to log out.
         """
-        print(f"\nWelcome, {self.account.username}! (Customer Mode)\n")
+        print(f"\nWelcome, {self._account._username}! (Customer Mode)\n")
 
         while True:
             print("--- Customer Menu ---")
@@ -84,7 +84,7 @@ class CustomerMenu:
         """
         address = input("Enter your delivery address: ").strip()
         try:
-            self._account._cartManager.checkout(self._account.username, address)
+            self._account._cartManager.checkout(self._account._username, address)
             print("")
         except Exception as e:
             print(f"Checkout failed: {e}\n")
