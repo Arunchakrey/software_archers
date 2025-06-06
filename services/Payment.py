@@ -7,17 +7,16 @@ class Payment:
 
         while True:
             try:
-                card = card_format()
-                date = date_format()
-                ccv = ccv_format()
+                card = cardFormat()
+                date = dateFormat()
+                ccv = ccvFormat()
                 print("Processing payment...")
                 print("Payment successful. Thank you for your purchase!\n")
                 break
             except Exception as e:
                 print(f"Invalid Payment Details: {e}")
                 
-
-def card_format():
+def cardFormat():
     while True:
         card_num = input("Enter card number (simulated): ")
         card_form = r'^\d{4}-\d{4}-\d{4}-\d{4}'
@@ -28,7 +27,7 @@ def card_format():
         else:
             raise Exception("Invalid card format. It must follow: xxxx-xxxx-xxxx-xxxx")
 
-def date_format():
+def dateFormat():
     while True:
         date = input("Enter expiry date (MM/YY): ")
         date_form = r'(0[1-9]|1[0-2])/\d{2}'
@@ -39,7 +38,7 @@ def date_format():
         else:
             raise Exception("Invalid date. It must follow: MM/YY")
 
-def ccv_format():
+def ccvFormat():
     while True:
         ccv = input("Enter CCV: ")
         ccv_form = r'^\d{3}$'

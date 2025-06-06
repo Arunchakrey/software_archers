@@ -1,0 +1,46 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" version="27.1.4">
+  <diagram name="Page-1" id="lD5uEP_Us9AOIoyA2nv7">
+    <mxGraphModel dx="719" dy="411" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="L7FWG-9Jo99xXmhsWNJ9-1" value="ShipmentInfo" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="200" width="290" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="L7FWG-9Jo99xXmhsWNJ9-2" value="&lt;div&gt;-_customerName: str&lt;/div&gt;&lt;div&gt;-_deliveryAddress: str&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="L7FWG-9Jo99xXmhsWNJ9-1">
+          <mxGeometry y="26" width="290" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="L7FWG-9Jo99xXmhsWNJ9-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="L7FWG-9Jo99xXmhsWNJ9-1">
+          <mxGeometry y="70" width="290" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="L7FWG-9Jo99xXmhsWNJ9-4" value="&lt;div&gt;+__init__(customerName: str, deliveryAddress: str)&lt;/div&gt;&lt;div&gt;+getDeliveryLabel(): str&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="L7FWG-9Jo99xXmhsWNJ9-1">
+          <mxGeometry y="78" width="290" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="L7FWG-9Jo99xXmhsWNJ9-5" value="Product" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="200" width="210" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="L7FWG-9Jo99xXmhsWNJ9-6" value="&lt;div&gt;-_name: str&lt;/div&gt;&lt;div&gt;-_price: float&lt;/div&gt;&lt;div&gt;-_quantity: int&lt;/div&gt;&lt;div&gt;-_description: str&lt;/div&gt;&lt;div&gt;-_id: int&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="L7FWG-9Jo99xXmhsWNJ9-5">
+          <mxGeometry y="26" width="210" height="84" as="geometry" />
+        </mxCell>
+        <mxCell id="L7FWG-9Jo99xXmhsWNJ9-7" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="L7FWG-9Jo99xXmhsWNJ9-5">
+          <mxGeometry y="110" width="210" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="L7FWG-9Jo99xXmhsWNJ9-8" value="&lt;div&gt;+__init__(name: str, price: float, quantity: int, description: str, id: int = None)&lt;/div&gt;&lt;div&gt;+getProductName(): str&lt;/div&gt;&lt;div&gt;+getProductPrice(): float&lt;/div&gt;&lt;div&gt;+setProductName(value: str)&lt;/div&gt;&lt;div&gt;+setProductPrice(value: float)&lt;/div&gt;&lt;div&gt;+setProductQuantity(value: int)&lt;/div&gt;&lt;div&gt;+isInStock(quantity: int = 1): bool&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="L7FWG-9Jo99xXmhsWNJ9-5">
+          <mxGeometry y="118" width="210" height="142" as="geometry" />
+        </mxCell>
+        <mxCell id="L7FWG-9Jo99xXmhsWNJ9-9" value="Order" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="200" width="210" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="L7FWG-9Jo99xXmhsWNJ9-10" value="&lt;div&gt;-_orderId: int&lt;/div&gt;&lt;div&gt;-_customerId: str&lt;/div&gt;&lt;div&gt;-_orderDate: date&lt;/div&gt;&lt;div&gt;-_status: str&lt;/div&gt;&lt;div&gt;-_shipmentInfo: ShipmentInfo&lt;/div&gt;&lt;div&gt;-_items: List[CartItem]&lt;/div&gt;&lt;div&gt;-_total: float&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="L7FWG-9Jo99xXmhsWNJ9-9">
+          <mxGeometry y="26" width="210" height="114" as="geometry" />
+        </mxCell>
+        <mxCell id="L7FWG-9Jo99xXmhsWNJ9-11" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="L7FWG-9Jo99xXmhsWNJ9-9">
+          <mxGeometry y="140" width="210" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="L7FWG-9Jo99xXmhsWNJ9-12" value="&lt;div&gt;+__init__(orderId: int, customerId: str, shipmentInfo: ShipmentInfo, cart: Cart, status: str = &quot;Incomplete&quot;, orderDate: date = date.today()):&lt;/div&gt;+getOrderSummary(): str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="L7FWG-9Jo99xXmhsWNJ9-9">
+          <mxGeometry y="148" width="210" height="92" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

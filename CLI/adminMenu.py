@@ -7,16 +7,16 @@ class AdminMenu:
     Handles the interactive loop for an AdminAccount.
     """
 
-    def __init__(self, account: AdminAccount, catalogue: Catalogue, products_filename: str):
-        self.account = account
-        self.catalogue = catalogue
-        self.products_filename = products_filename
+    def __init__(self, account: AdminAccount, catalogue: Catalogue, productsFilename: str):
+        self._account = account
+        self._catalogue = catalogue
+        self._productsFilename = productsFilename
 
     def run(self):
         """
         Runs the admin menu loop until the admin chooses to log out.
         """
-        print(f"\nWelcome, {self.account.username}! (Admin Mode)\n")
+        print(f"\nWelcome, {self._account.username}! (Admin Mode)\n")
 
         while True:
             print("--- Admin Menu ---")
@@ -29,25 +29,28 @@ class AdminMenu:
             choice = input("Choose an option: ").strip()
             if choice == "1":
                 # View all products
-                self.catalogue.listProducts()
+                self._catalogue.listProducts()
 
             elif choice == "2":
-                self._editProducts()
+                self.editProducts()
 
             elif choice == "3":
-                self._generateStatistics()
+                self.generateStatistics()
 
             elif choice == "4":
-                self._manageShipmentStatus()
+                self.manageShipmentStatus()
 
             elif choice == "5":
+                self.deleteProduct()
+                
+            elif choice == "6":
                 print("Logging out of Admin Menu.\n")
                 break
 
             else:
                 print("Invalid option. Please choose 1–5.\n")
-
-    def _editProducts(self):
+        
+    def editProducts(self):
         """
         Sub‐menu for editing products (register new, update quantity, update price).
         """
@@ -57,77 +60,74 @@ class AdminMenu:
             print("2. Register New Product")
             print("3. Update Product Quantity")
             print("4. Update Product Price")
-            print("5. Return to Admin Menu")
+            print("5. Delete Product")
+            print("6. Return to Admin Menu")
 
             sub = input("Choose an option: ").strip()
+
             if sub == "1":
-                self.catalogue.listProducts()
+                self._catalogue.listProducts()
 
             elif sub == "2":
-                # Register new product
                 try:
-                    p_id = self.account.product_manager.get_next_id(self.products_filename)
-                    p_name = input("Enter Product Name: ").strip()
-                    p_price = float(input("Enter Product's Price: ").strip())
-                    p_quantity = int(input("Enter Product's Quantity: ").strip())
-                    p_description = input("Enter Product's Description: ").strip()
-                    self.account.product_manager.registerProduct(
-                        p_id, p_name, p_price, p_quantity, p_description
-                    )
-                    print("New product registered successfully.\n")
+                    pId = self._account._productManager.getNextId(self._productsFilename)
+                    pName = input("Enter Product Name: ").strip()
+                    pPrice = float(input("Enter Product's Price: ").strip())
+                    pQuantity = int(input("Enter Product's Quantity: ").strip())
+                    pDescription = input("Enter Product's Description: ").strip()
+                    self._account._productManager.registerProduct(pId, pName, pPrice, pQuantity, pDescription)
                 except ValueError:
                     print("Invalid input. Price must be a number, Quantity must be an integer.\n")
 
             elif sub == "3":
-                # Update quantity
                 try:
-                    self.catalogue.listProducts()
-                    p_id = int(input("Enter Product ID: ").strip())
-                    new_qty = int(input("Enter new quantity: ").strip())
-                    self.account.product_manager.updateQuantity(p_id, new_qty)
-                    print("Quantity updated.\n")
+                    self._catalogue.listProducts()
+                    pId = int(input("Enter Product ID: ").strip())
+                    newQty = int(input("Enter new quantity: ").strip())
+                    self._account._productManager.updateQuantity(pId, newQty)
                 except ValueError:
                     print("Invalid ID or Quantity. Must be integer.\n")
 
             elif sub == "4":
-                # Update price
                 try:
-                    self.catalogue.listProducts()
-                    p_id = int(input("Enter Product ID: ").strip())
-                    new_price = float(input("Enter new price: ").strip())
-                    self.account.product_manager.updatePrice(p_id, new_price)
-                    print("Price updated.\n")
+                    self._catalogue.listProducts()
+                    pId = int(input("Enter Product ID: ").strip())
+                    newPrice = float(input("Enter new price: ").strip())
+                    self._account._productManager.updatePrice(pId, newPrice)
                 except ValueError:
                     print("Invalid ID or Price. Must be numeric.\n")
 
             elif sub == "5":
+                self._catalogue.listProducts()
+                self.deleteProduct()
+
+            elif sub == "6":
                 print("Returning to Admin Menu.\n")
                 break
 
             else:
-                print("Invalid option. Please choose 1–5.\n")
+                print("Invalid option. Please choose 1–6.\n")
 
-    def _generateStatistics(self):
+    def generateStatistics(self):
         """
         Prompt for date range and call the admin's generate_sales_report.
         """
         try:
-            start_date = input("Enter start date (YYYY-MM-DD): ").strip()
-            end_date = input("Enter end date (YYYY-MM-DD): ").strip()
-            self.account.generate_sales_report(start_date, end_date)
-            print("")  # blank line after stats
+            startDate = input("Enter start date (YYYY-MM-DD): ").strip()
+            endDate = input("Enter end date (YYYY-MM-DD): ").strip()
+            self._account.generateSalesReport(startDate, endDate) #edit
         except ValueError:
             print("Invalid date format. Please use YYYY-MM-DD.\n")
 
-    def _manageShipmentStatus(self):
+    def manageShipmentStatus(self):
         """
         Prompt for an order ID, then update its status to Incomplete/Complete.
         """
 
         try:
-            o = OrderReader.readAllOrders()
-            OrderReader.printOrders(o)
-            order_id = int(input("Enter order ID to edit status: ").strip())
+            orders = OrderReader.readAllOrders()
+            OrderReader.printOrders(orders)
+            orderId = int(input("Enter order ID to edit status: ").strip())
         except ValueError:
             print("Order ID must be an integer.\n")
             return
@@ -136,20 +136,28 @@ class AdminMenu:
         print("2. Update Status to 'Complete'")
         
         try:
-            status_choice = int(input("Choose option: ").strip())
+            statusChoice = int(input("Choose option: ").strip())
         except ValueError:
             print("Invalid input: please enter 1 or 2.")
             return
 
-        if status_choice in [1, 2]:
-            updated = self.account.updateOrderStatus(order_id, status_choice)
+        if statusChoice in [1, 2]:
+            updated = self._account.updateOrderStatus(orderId, statusChoice)
             if updated:
-                print(f"Order {order_id} status updated successfully.\n")
+                print(f"Order {orderId} status updated successfully.\n")
             else:
-                print(f"Failed to update order {order_id} status.\n")
+                print(f"Failed to update order {orderId} status.\n")
         else:
             print("Invalid choice. Must be 1 or 2.\n")
             return
+        
+    def deleteProduct(self):
+        try:
+            productId = int(input("Enter Product ID to delete: ").strip())
+            self._account._productManager.deleteProduct(productId)
+        except ValueError:
+            print("[ERROR] Invalid Product ID. Must be a number.")
+        
 
 
 

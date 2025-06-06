@@ -8,8 +8,8 @@ class CustomerMenu:
     """
 
     def __init__(self, account: CustomerAccount, catalogue: Catalogue):
-        self.account = account
-        self.catalogue = catalogue
+        self._account = account
+        self._catalogue = catalogue
 
     def run(self):
         """
@@ -29,79 +29,72 @@ class CustomerMenu:
 
             choice = input("Choose an option: ").strip()
             if choice == "1":
-                self.catalogue.listProducts()
-
+                self._catalogue.listProducts()
             elif choice == "2":
-                self._addToCart()
-
+                self.addToCart()
             elif choice == "3":
-                self.account._cartManager.viewCart()
-
+                self._account._cartManager.viewCart()
             elif choice == "4":
-                self._removeFromCart()
-
+                self.removeFromCart()
             elif choice == "5":
-                self._checkout()
-
+                self.checkout()
             elif choice == "6":
-                self._viewOrders()
-
+                self.viewOrders()
             elif choice == "7":
                 print("Logging out of Customer Menu.\n")
                 break
-
             else:
                 print("Invalid option. Please choose 1–7.\n")
 
-    def _addToCart(self):
+    def addToCart(self):
         """
         Prompts for product ID & quantity, then adds to this customer's cart.
         """
         try:
-            pid = int(input("Enter product ID: ").strip())
-            qty = int(input("Enter quantity: ").strip())
+            productId = int(input("Enter product ID: ").strip())
+            quantity = int(input("Enter quantity: ").strip())
         except ValueError:
             print("ID and quantity must be integers.\n")
             return
 
-        product = self.catalogue.getProductById(pid)
+        product = self._catalogue.getProductById(productId)
         if not product:
             print("Product not found.\n")
             return
 
-        msg = self.account._cartManager.addToCart(product, qty)
+        msg = self._account._cartManager.addToCart(product, quantity)
         print(msg + "\n")
 
-    def _removeFromCart(self):
+    def removeFromCart(self):
         """
         Prompts for product ID, then removes it from the cart if present.
         """
         try:
-            pid = int(input("Enter product ID to remove: ").strip())
+            productId = int(input("Enter product ID to remove: ").strip())
         except ValueError:
             print("Product ID must be an integer.\n")
             return
 
-        self.account._cartManager.removeFromCart(pid)
+        self._account._cartManager.removeFromCart(productId)
         print("If that item was in your cart, it’s been removed.\n")
 
-    def _checkout(self):
+    def checkout(self):
         """
         Prompts for address and attempts to checkout.
         """
         address = input("Enter your delivery address: ").strip()
         try:
-            self.account._cartManager.checkout(self.account.username, address)
-            print("")  # blank line after confirmation
+            self._account._cartManager.checkout(self._account.username, address)
+            print("")
         except Exception as e:
             print(f"Checkout failed: {e}\n")
 
-    def _viewOrders(self):
+    def viewOrders(self):
         """
         Displays all past orders for this customer.
         """
         try:
-            OrderManager.displayOrders(self.account)
-            print("")  # blank line after listing
+            OrderManager.displayOrders(self._account)
+            print("")
         except Exception as e:
             print(f"Failed to retrieve orders: {e}\n")

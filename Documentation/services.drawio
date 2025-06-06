@@ -1,0 +1,43 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" version="27.1.4">
+  <diagram name="Page-1" id="-ZOX7i-J5kiJoyJgUYKW">
+    <mxGraphModel dx="719" dy="411" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="229PD9OcJ88HNz2hoyAq-1" value="Authenicator" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="160" width="240" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="229PD9OcJ88HNz2hoyAq-2" value="&lt;div&gt;-_accounts: List[IAccount]&lt;/div&gt;&lt;div&gt;-_accountReader: AccountReader&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="229PD9OcJ88HNz2hoyAq-1">
+          <mxGeometry y="26" width="240" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="229PD9OcJ88HNz2hoyAq-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="229PD9OcJ88HNz2hoyAq-1">
+          <mxGeometry y="70" width="240" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="229PD9OcJ88HNz2hoyAq-4" value="&lt;div&gt;+__init__(accounts: List[IAccount], accountReader: AccountReader)&lt;/div&gt;&lt;div&gt;+authenticate(username: str, password: str): IAccount | None&lt;/div&gt;&lt;div&gt;+usernameExists(username: str): bool&lt;/div&gt;&lt;div&gt;+registerAccount(account: IAccount): void&lt;/div&gt;&lt;div&gt;+signUp(): void&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="229PD9OcJ88HNz2hoyAq-1">
+          <mxGeometry y="78" width="240" height="142" as="geometry" />
+        </mxCell>
+        <mxCell id="229PD9OcJ88HNz2hoyAq-9" value="Payment" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="350" width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="229PD9OcJ88HNz2hoyAq-11" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="229PD9OcJ88HNz2hoyAq-9">
+          <mxGeometry y="26" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="229PD9OcJ88HNz2hoyAq-12" value="&lt;div&gt;&lt;div&gt;+ccvFormat()&lt;/div&gt;&lt;div&gt;+dateFormat()&lt;br&gt;+cardFormat()&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&amp;lt;&amp;lt;static&amp;gt;&amp;gt;&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+process(): void&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="229PD9OcJ88HNz2hoyAq-9">
+          <mxGeometry y="34" width="160" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="229PD9OcJ88HNz2hoyAq-13" value="Catalogue" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="160" width="290" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="229PD9OcJ88HNz2hoyAq-14" value="-_json_File: str&lt;div&gt;-_products: List[Product]&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="229PD9OcJ88HNz2hoyAq-13">
+          <mxGeometry y="26" width="290" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="229PD9OcJ88HNz2hoyAq-15" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="229PD9OcJ88HNz2hoyAq-13">
+          <mxGeometry y="60" width="290" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="229PD9OcJ88HNz2hoyAq-16" value="&lt;div&gt;+__init__(jsonFile: str = &quot;data/products.json&quot;)&lt;/div&gt;&lt;div&gt;+loadFromFile(filepath: str= None): void&lt;/div&gt;&lt;div&gt;+listProducts(): void&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+getProductById(productId: int): Product | None&lt;/span&gt;&lt;/div&gt;&lt;div&gt;+saveProductsToJson(): void&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="229PD9OcJ88HNz2hoyAq-13">
+          <mxGeometry y="68" width="290" height="82" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

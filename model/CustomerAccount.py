@@ -20,7 +20,7 @@ class CustomerAccount(IAccount):
             raise ValueError("Username can not be empty.")
         self._username = value
 
-    def change_password(self, new_password):
+    def changePassword(self, new_password):
         self._password = new_password
         print("Customer password updated")
 
@@ -32,5 +32,5 @@ class CustomerAccount(IAccount):
     def email(self, value):
         self.email = value
 
-    def display_info(self):
+    def displayInfo(self):
         print(f"Customer: {self._username}, Email: {self._email}")

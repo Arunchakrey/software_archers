@@ -50,7 +50,7 @@ class OrderReader:
                 # skip blank lines
                 continue
 
-            # (A) Check for a header line (4 or 5 comma-separated fields)
+            #Check for a header line (4 or 5 comma-separated fields)
             m_header = OrderReader.HEADER_RE.match(line.strip())
             if m_header:
                 order_id   = int(m_header.group(1))
@@ -62,8 +62,8 @@ class OrderReader:
 
                 # If we were in the middle of building a previous order, finalize it now:
                 if current_order is not None and current_cart is not None:
-                    current_order.items = current_cart.items.copy()
-                    current_order.total = sum(it.getTotal() for it in current_cart.items)
+                    current_order._items = current_cart._items.copy()
+                    current_order._total = sum(it.getTotal() for it in current_cart._items)
                     orders.append(current_order)
 
                 # Start a new Cart + Order (with empty items for now)
@@ -79,19 +79,19 @@ class OrderReader:
                 )
                 continue  # Move on to next line
 
-            # (B) If we have an active order being built, parse shipment / item / separator
+            #If we have an active order being built, parse shipment / item / separator
             if current_order is not None and current_cart is not None:
                 stripped = line.strip()
 
-                # (B1) Shipment line
+                # Shipment line
                 m_ship = OrderReader.SHIP_RE.match(stripped)
                 if m_ship:
                     ship_name = m_ship.group(1)
                     address   = m_ship.group(2).strip()
-                    current_order.shipmentInfo = ShipmentInfo(ship_name, address)
+                    current_order._shipmentInfo = ShipmentInfo(ship_name, address)
                     continue
 
-                # (B2) Item line
+                # Item line
                 m_item = OrderReader.ITEM_RE.match(stripped)
                 if m_item:
                     prod_name  = m_item.group(1).strip()
@@ -102,26 +102,26 @@ class OrderReader:
                     # Create a minimal Product stub for the CartItem
                     prod = Product(id, prod_name, unit_price, 0, "")
                     cart_item = CartItem(prod, qty)
-                    current_cart.items.append(cart_item)
+                    current_cart._items.append(cart_item)
                     continue
 
-                # (B3) Separator line "---------------------------------"
+                # Separator line "---------------------------------"
                 if stripped.startswith("-" * 33):
-                    current_order.items = current_cart.items.copy()
-                    current_order.total = sum(it.getTotal() for it in current_cart.items)
+                    current_order._items = current_cart._items.copy()
+                    current_order._total = sum(it.getTotal() for it in current_cart._items)
                     orders.append(current_order)
 
                     current_order = None
                     current_cart  = None
                     continue
 
-                # (B4) Any other line: ignore
+                # Any other line: ignore
                 continue
 
-        # (C) At end of file, if an order was in progress but never closed by a separator:
+        # At end of file, if an order was in progress but never closed by a separator:
         if current_order is not None and current_cart is not None:
-            current_order.items = current_cart.items.copy()
-            current_order.total = sum(it.getTotal() for it in current_cart.items)
+            current_order._items = current_cart._items.copy()
+            current_order._total = sum(it.getTotal() for it in current_cart._items)
             orders.append(current_order)
 
         return orders
@@ -156,5 +156,29 @@ class OrderReader:
         """
         Returns only those Order objects whose customerId matches `username`.
         """
-        all_orders = OrderReader.readAllOrders(filename)
-        return [o for o in all_orders if o.customerId == username]
+        return [order for order in OrderReader.readAllOrders(filename) if order._customerId == username]
+    
+    @staticmethod
+    def printOrders(orders: List[Order]):
+        """
+        Nicely prints a list of Order objects.
+        """
+        if not orders:
+            print("No orders found.")
+            return
+
+        for order in orders:
+            print("="*40)
+            print(f"Order ID:   {order._orderId}")
+            print(f"Customer:   {order._customerId}")
+            print(f"Date:       {order._orderDate}")
+            print(f"Status:     {order._status}")
+            print(f"Shipment to: {order._shipmentInfo._customerName}")
+            print(f"Address:     {order._shipmentInfo._deliveryAddress}")
+            print("- Items:")
+            for item in order._items:
+                product = item._product
+                print(f"   {product._name} x {item._quantity} @ ${product._price:.2f} each = ${item.getTotal():.2f}")
+            print(f"Total:      ${order._total:.2f}")
+            print("="*40)
+            print()

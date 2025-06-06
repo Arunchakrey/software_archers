@@ -1,0 +1,41 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" version="27.1.4">
+  <diagram name="Page-1" id="HODvfSX25s23nsYMw8li">
+    <mxGraphModel dx="1042" dy="596" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="1Jz8KfA48wBPMiGPAAFH-5" value="CustomerAccount" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="590" y="100" width="300" height="210" as="geometry">
+            <mxRectangle x="310" y="110" width="100" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1Jz8KfA48wBPMiGPAAFH-6" value="-_username: str&lt;div&gt;-_password: str&lt;/div&gt;&lt;div&gt;-_email: str&lt;/div&gt;&lt;div&gt;-_cart: Cart&lt;/div&gt;&lt;div&gt;&lt;div&gt;-_cartManager: CartManager&lt;/div&gt;&lt;/div&gt;&lt;div&gt;+username: str&lt;div&gt;+password: str&lt;/div&gt;&lt;div&gt;+email: str&lt;/div&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="1Jz8KfA48wBPMiGPAAFH-5" vertex="1">
+          <mxGeometry y="26" width="300" height="124" as="geometry" />
+        </mxCell>
+        <mxCell id="1Jz8KfA48wBPMiGPAAFH-7" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="1Jz8KfA48wBPMiGPAAFH-5" vertex="1">
+          <mxGeometry y="150" width="300" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="1Jz8KfA48wBPMiGPAAFH-8" value="&lt;div&gt;+__init__(username: str, password: str, email: str)&lt;/div&gt;&lt;div&gt;+change_password(new_password: str)&lt;/div&gt;&lt;div&gt;+display_info()&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="1Jz8KfA48wBPMiGPAAFH-5" vertex="1">
+          <mxGeometry y="158" width="300" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="1Jz8KfA48wBPMiGPAAFH-9" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;IAccount&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;lt;abstract&amp;gt; +name&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;lt;abstract&amp;gt; + password&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;lt;abstract&amp;gt; +setAdmin()&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="370" y="100" width="190" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="1Jz8KfA48wBPMiGPAAFH-10" value="AdminAccount" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="370" y="330" width="410" height="270" as="geometry">
+            <mxRectangle x="310" y="110" width="100" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1Jz8KfA48wBPMiGPAAFH-11" value="-_username: str&lt;div&gt;-_password: str&lt;/div&gt;&lt;div&gt;-_product_manager: ProductManager&lt;/div&gt;&lt;div&gt;&lt;div&gt;-_statistics_manager: StatisticsManager&lt;/div&gt;&lt;/div&gt;&lt;div&gt;+username: str&lt;div&gt;+password: str&lt;/div&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="1Jz8KfA48wBPMiGPAAFH-10" vertex="1">
+          <mxGeometry y="26" width="410" height="114" as="geometry" />
+        </mxCell>
+        <mxCell id="1Jz8KfA48wBPMiGPAAFH-12" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="1Jz8KfA48wBPMiGPAAFH-10" vertex="1">
+          <mxGeometry y="140" width="410" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="1Jz8KfA48wBPMiGPAAFH-13" value="&lt;div&gt;&lt;div&gt;+__init__(username: str, password: str, catalogue: Catalogue)&lt;/div&gt;&lt;div&gt;+changePassword(new_password: str)&lt;/div&gt;&lt;div&gt;+displayInfo()&lt;/div&gt;&lt;div&gt;+registerProduct()&lt;/div&gt;&lt;div&gt;+updateProductPrice(productId, newPrice)&lt;/div&gt;&lt;div&gt;+updateProductQuantity(productId, newQuantity)&lt;/div&gt;&lt;div&gt;+generateSalesReport(startDate: str, endDate: str, top_n: int = None)&lt;/div&gt;&lt;div&gt;+updateOrderStatus(orderId: int, choice: int)&lt;/div&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="1Jz8KfA48wBPMiGPAAFH-10" vertex="1">
+          <mxGeometry y="148" width="410" height="122" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

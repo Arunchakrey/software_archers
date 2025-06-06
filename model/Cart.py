@@ -3,7 +3,7 @@ from typing import List
 
 class Cart:
     def __init__(self):
-        self.items: List[CartItem] = []
+        self._items: List[CartItem] = []
         
     def getTotal(self):
-        return sum(item.getTotal() for item in self.items)
+        return sum(item.getTotal() for item in self._items)
