@@ -39,11 +39,8 @@ class AdminMenu:
 
             elif choice == "4":
                 self.manageShipmentStatus()
-
-            elif choice == "5":
-                self.deleteProduct()
                 
-            elif choice == "6":
+            elif choice == "5":
                 print("Logging out of Admin Menu.\n")
                 break
 
