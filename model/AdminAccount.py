@@ -44,7 +44,3 @@ class AdminAccount(IAccount):
         # Try to update, and return the actual result
         success = OrderManager.updateOrderStatus(orderId, orderStatus)
         return success
-
-
-
-    

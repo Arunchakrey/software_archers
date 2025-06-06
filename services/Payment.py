@@ -16,7 +16,6 @@ class Payment:
             except Exception as e:
                 print(f"Invalid Payment Details: {e}")
                 
-
 def cardFormat():
     while True:
         card_num = input("Enter card number (simulated): ")

@@ -127,6 +127,31 @@ class OrderReader:
         return orders
 
     @staticmethod
+    def printOrders(orders: List[Order]):
+        """
+        Nicely prints a list of Order objects.
+        """
+        if not orders:
+            print("No orders found.")
+            return
+
+        for order in orders:
+            print("="*40)
+            print(f"Order ID:   {order.orderId}")
+            print(f"Customer:   {order.customerId}")
+            print(f"Date:       {order.orderDate}")
+            print(f"Status:     {order.status}")
+            print(f"Shipment to: {order.shipmentInfo.customerName}")
+            print(f"Address:     {order.shipmentInfo.deliveryAddress}")
+            print("- Items:")
+            for item in order.items:
+                product = item.product
+                print(f"   {product.name} x {item.quantity} @ ${product.price:.2f} each = ${item.getTotal():.2f}")
+            print(f"Total:      ${order.total:.2f}")
+            print("="*40)
+            print()
+
+    @staticmethod
     def getOrdersByCustomer(username: str, filename="data/orders.txt") -> List[Order]:
         """
         Returns only those Order objects whose customerId matches `username`.
